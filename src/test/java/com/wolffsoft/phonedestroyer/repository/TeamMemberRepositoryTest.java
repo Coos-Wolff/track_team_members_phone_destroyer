@@ -59,6 +59,8 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
 
         assertThat(addedTeamMember1.get().getName()).isEqualTo(teamMember3.getName());
         assertThat(addedTeamMember2.get().getName()).isEqualTo(teamMember4.getName());
+
+        repository.deleteTeamMembersByName(teamMembers);
     }
 
     @Test
@@ -67,7 +69,7 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
 
         Optional<TeamMember> returnedTeamMember = repository.getTeamMemberByName(name);
 
-        assertThat(returnedTeamMember).isEqualTo(Optional.of(teamMember3));
+        assertThat(returnedTeamMember.get().getName()).isEqualTo(name);
     }
 
     @Test
