@@ -19,14 +19,6 @@ public class TeamMemberRepository {
         this.teamMemberMapper = new TeamMemberMapper();
     }
 
-    public Optional<TeamMember> getTeamMemberByName(String name) {
-        return dslContext
-                .select()
-                .from(TEAM_MEMBER)
-                .where(TEAM_MEMBER.NAME.eq(name))
-                .fetchOne(teamMemberMapper);
-    }
-
     public int addTeamMember(TeamMember teamMember) {
         return dslContext
                 .insertInto(TEAM_MEMBER, TEAM_MEMBER.NAME, TEAM_MEMBER.DATE_JOINED)
@@ -35,12 +27,25 @@ public class TeamMemberRepository {
     }
 
     public void addTeamMembers(List<TeamMember> teamMembers) {
-        teamMembers.forEach(teamMember -> {
-            try {
-                addTeamMember(teamMember);
-            } catch (Exception ex) {
+        teamMembers.forEach(this::addTeamMember);
+    }
 
-            }
-        });
+    public Optional<TeamMember> getTeamMemberByName(String name) {
+        return dslContext
+                .select()
+                .from(TEAM_MEMBER)
+                .where(TEAM_MEMBER.NAME.eq(name))
+                .fetchOne(teamMemberMapper);
+    }
+
+    public List<TeamMember> getAllTeamMembers() {
+        return dslContext
+                .insertInto(TEAM_MEMBER, TEAM_MEMBER.NAME, TEAM_MEMBER.DATE_JOINED)
+                .values(teamMember.getName(), teamMember.getJoinedTeam())
+                .execute();
+    }
+
+    public void deleteTeamMembersByName(List<TeamMember> teamMembers) {
+        teamMembers.forEach(teamMember -> deleteTeamMemberByName(teamMember.getName()));
     }
 }
