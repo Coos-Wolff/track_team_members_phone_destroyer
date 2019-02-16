@@ -12,7 +12,7 @@ public class OptionalTeamMemberMapper implements RecordMapper<Record, Optional<T
 
     @Override
     public Optional<TeamMember> map(Record record) {
-        return Optional.of(TeamMember.builder()
+        return Optional.ofNullable(TeamMember.builder()
                 .id(record.get(TEAM_MEMBER.ID))
                 .name(record.get(TEAM_MEMBER.NAME))
                 .joinedTeam(record.get(TEAM_MEMBER.DATE_JOINED))
