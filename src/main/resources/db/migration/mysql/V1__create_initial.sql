@@ -28,3 +28,14 @@ CREATE TABLE team_member
   tickets_collected_current_event INT(6)      NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 );
+
+-- TODO REMOVE DROPPING TABLES IN PRODUCTION !!!!
+DROP TABLE IF EXISTS event_team_member;
+CREATE TABLE event_team_member
+(
+  event_id       INT(30) NOT NULL,
+  team_member_id INT(30) NOT NULL,
+  FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (team_member_id) REFERENCES team_member (id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (event_id, team_member_id)
+);
