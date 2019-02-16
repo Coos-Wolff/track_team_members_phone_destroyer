@@ -20,16 +20,13 @@ public class TeamMemberTest {
         Event event2 = Event.builder().name("Test Event 2").build();
         Event event3 = Event.builder().name("Test Event 3").build();
 
-        List<Event> events = Stream.of(event1, event2, event3).collect(Collectors.toList());
         TeamMember teamMember = TeamMember.builder()
                 .name("TestMember")
-                .eventsPlayed(events)
                 .ticketsCollectedCurrentEvent(150)
                 .build();
 
         assertThat(teamMember.getName()).isEqualTo("TestMember");
         assertThat(teamMember.getJoinedTeam()).isEqualTo(instantToString());
-        assertThat(teamMember.getEventsPlayed()).isEqualTo(events);
         assertThat(teamMember.getTicketsCollectedCurrentEvent()).isEqualTo(150);
     }
 }
