@@ -29,7 +29,7 @@
         <maven.build.timestamp.format>yyyy-MM-dd'T'HH-mm-ss'Z'</maven.build.timestamp.format>
         <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
         <mockito.version>2.24.0</mockito.version>
-        <mysql.url>jdbc:mysql://localhost:3306/phone_destroyer?useSSL=false</mysql.url>
+        <mysql.url>jdbc:mysql://localhost:3306/phone_destroyer?useSSL=false&amp;allowPublicKeyRetrieval=true</mysql.url>
         <mysql.user>${env.MYSQL.USERNAME}</mysql.user>
         <mysql.password>${env.MYSQL.PASSWORD}</mysql.password>
         <mysql.connector.version>8.0.11</mysql.connector.version>
