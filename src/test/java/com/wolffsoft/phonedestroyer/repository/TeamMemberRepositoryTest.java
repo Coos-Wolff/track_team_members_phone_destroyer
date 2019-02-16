@@ -73,6 +73,15 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
     }
 
     @Test
+    public void testGetAllTeamMembers() {
+        List<TeamMember> teamMembers = repository.getAllTeamMembers();
+
+        assertThat(teamMembers.size()).isEqualTo(2);
+        assertThat(teamMembers.get(0).getName()).isEqualTo("Team Member 1");
+        assertThat(teamMembers.get(1).getName()).isEqualTo("Team Member 2");
+    }
+
+    @Test
     public void testDeleteTeamMember() {
         int addedTeamMember = repository.addTeamMember(teamMember3);
 
