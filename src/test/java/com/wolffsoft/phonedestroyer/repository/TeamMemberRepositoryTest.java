@@ -116,6 +116,8 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
         List<EventTicket> eventTickets = repository.getEventTicketsTeamMembersByEventName(eventName1);
 
         assertThat(eventTickets.get(0).getAmountEventTickets()).isEqualTo(150);
+        assertThat(eventTickets.get(0).getTeamMemberName()).isEqualTo("Team Member 1");
         assertThat(eventTickets.get(1).getAmountEventTickets()).isEqualTo(123);
+        assertThat(eventTickets.get(1).getTeamMemberName()).isEqualTo("Team Member 2");
     }
 }
