@@ -1,5 +1,6 @@
 package com.wolffsoft.phonedestroyer.repository;
 
+import com.wolffsoft.phonedestroyer.model.EventTicket;
 import com.wolffsoft.phonedestroyer.model.TeamMember;
 import com.wolffsoft.phonedestroyer.model.configuration.AbstractTestRepository;
 import org.jooq.DSLContext;
@@ -107,5 +108,14 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
 
         allTeamMembers = repository.getAllTeamMembers();
         assertThat(allTeamMembers.size()).isEqualTo(2);
+    }
+
+    @Test
+    public void testGetEventTicketsForTeamMembersByEventName() {
+        String eventName1 = "Test Event 1";
+        List<EventTicket> eventTickets = repository.getEventTicketsTeamMembersByEventName(eventName1);
+
+        assertThat(eventTickets.get(0).getAmountEventTickets()).isEqualTo(150);
+        assertThat(eventTickets.get(1).getAmountEventTickets()).isEqualTo(123);
     }
 }
