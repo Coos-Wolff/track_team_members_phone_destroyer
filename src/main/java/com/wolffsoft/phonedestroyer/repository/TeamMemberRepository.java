@@ -68,7 +68,7 @@ public class TeamMemberRepository {
         getTeamMembersByEventName(eventName)
                 .forEach(teamMember -> {
                     EventTicket eventTicket = EventTicket.builder()
-                            .name(teamMember.getName())
+                            .teamMemberName(teamMember.getName())
                             .amountEventTickets(teamMember.getTicketsCollectedCurrentEvent())
                             .build();
                     eventTickets.add(eventTicket);
