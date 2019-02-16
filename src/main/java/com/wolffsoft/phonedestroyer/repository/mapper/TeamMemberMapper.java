@@ -14,6 +14,7 @@ public class TeamMemberMapper implements RecordMapper<Record, TeamMember> {
                 .id(record.get(TEAM_MEMBER.ID))
                 .name(record.get(TEAM_MEMBER.NAME))
                 .joinedTeam(record.get(TEAM_MEMBER.DATE_JOINED))
+                .ticketsCollectedCurrentEvent(record.get(TEAM_MEMBER.TICKETS_COLLECTED_CURRENT_EVENT))
                 .build();
     }
 }
