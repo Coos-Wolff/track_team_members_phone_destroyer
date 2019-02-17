@@ -77,7 +77,7 @@ public class TeamMemberRepository {
         return eventTickets;
     }
 
-    private List<TeamMember> getTeamMembersByEventName(String eventName) {
+    public List<TeamMember> getTeamMembersByEventName(String eventName) {
         return dslContext
                 .select()
                 .from(TEAM_MEMBER)
