@@ -13,11 +13,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TeamMemberTest {
 
+    private static final String TEAM_MEMBER_NAME = "Team Member Name";
+    private static final  String DATE_JOINED = instantToString();
+    private static final int TICKETS_COLLECTED = 12;
+    private static final int ID = 1;
     @Test
     public void testTeamMember() {
         TeamMember teamMember = TeamMember.builder()
-                .name("TestMember")
-                .ticketsCollectedCurrentEvent(150)
+                .id(ID)
+                .name(TEAM_MEMBER_NAME)
+                .joinedTeam(DATE_JOINED)
+                .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
                 .build();
 
         assertThat(teamMember.getName()).isEqualTo("TestMember");

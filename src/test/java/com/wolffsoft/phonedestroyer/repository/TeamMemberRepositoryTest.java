@@ -18,6 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberRepository> {
 
+    private static final String TEAM_MEMBER_NAME_1 = "Team Member 1";
+    private static final String TEAM_MEMBER_NAME_2 = "Team Member 2";
     private TeamMember teamMember3;
     private TeamMember teamMember4;
 
@@ -78,7 +80,8 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
 
         assertThat(teamMembers.size()).isEqualTo(2);
         assertThat(teamMembers.get(0).getName()).isEqualTo("Team Member 1");
-        assertThat(teamMembers.get(1).getName()).isEqualTo("Team Member 2");
+        assertThat(teamMembers.get(0).getName()).isEqualTo(TEAM_MEMBER_NAME_1);
+        assertThat(teamMembers.get(1).getName()).isEqualTo(TEAM_MEMBER_NAME_2);
     }
 
     @Test
@@ -115,8 +118,8 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
         List<EventTicket> eventTickets = repository.getEventTicketsTeamMembersByEventName(eventName1);
 
         assertThat(eventTickets.get(0).getAmountEventTickets()).isEqualTo(150);
-        assertThat(eventTickets.get(0).getTeamMemberName()).isEqualTo("Team Member 1");
+        assertThat(eventTickets.get(0).getTeamMemberName()).isEqualTo(TEAM_MEMBER_NAME_1);
         assertThat(eventTickets.get(1).getAmountEventTickets()).isEqualTo(123);
-        assertThat(eventTickets.get(1).getTeamMemberName()).isEqualTo("Team Member 2");
+        assertThat(eventTickets.get(1).getTeamMemberName()).isEqualTo(TEAM_MEMBER_NAME_2);
     }
 }
