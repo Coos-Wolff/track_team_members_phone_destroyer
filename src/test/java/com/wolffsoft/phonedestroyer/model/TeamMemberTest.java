@@ -1,12 +1,7 @@
 package com.wolffsoft.phonedestroyer.model;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.wolffsoft.phonedestroyer.model.InstantNowToString.instantToString;
 import static org.assertj.core.api.Assertions.assertThat;

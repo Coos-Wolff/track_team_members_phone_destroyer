@@ -1,7 +1,7 @@
 package com.wolffsoft.phonedestroyer.repository;
 
 import com.wolffsoft.phonedestroyer.model.Event;
-import com.wolffsoft.phonedestroyer.model.configuration.AbstractTestRepository;
+import com.wolffsoft.phonedestroyer.configuration.AbstractTestRepository;
 import org.jooq.DSLContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
