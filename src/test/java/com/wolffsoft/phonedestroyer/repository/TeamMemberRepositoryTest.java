@@ -116,17 +116,6 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
     }
 
     @Test
-    public void testGetEventTicketsForTeamMembersByEventName() {
-        String eventName1 = "Test Event 1";
-        List<EventTicket> eventTickets = repository.getEventTicketsTeamMembersByEventName(eventName1);
-
-        assertThat(eventTickets.get(0).getAmountEventTickets()).isEqualTo(150);
-        assertThat(eventTickets.get(0).getTeamMemberName()).isEqualTo(TEAM_MEMBER_NAME_1);
-        assertThat(eventTickets.get(1).getAmountEventTickets()).isEqualTo(123);
-        assertThat(eventTickets.get(1).getTeamMemberName()).isEqualTo(TEAM_MEMBER_NAME_2);
-    }
-
-    @Test
     public void testGetTeamMembersByEventName() {
         String eventName = "Test Event 2";
         List<TeamMember> teamMembers = repository.getTeamMembersByEventName(eventName);
