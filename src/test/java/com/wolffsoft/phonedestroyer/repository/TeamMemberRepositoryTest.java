@@ -31,14 +31,14 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
     @Before
     public void setup() {
         teamMember3 = TeamMember.builder()
-                .id(3)
-                .name("Team Member 3")
+                .id(13)
+                .name("Team Member 13")
                 .joinedTeam("01-01-2019")
                 .build();
 
         teamMember4 = TeamMember.builder()
-                .id(4)
-                .name("Team Member 4")
+                .id(14)
+                .name("Team Member 14")
                 .joinedTeam("01-01-2019")
                 .build();
     }
@@ -78,10 +78,15 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
     public void testGetAllTeamMembers() {
         List<TeamMember> teamMembers = repository.getAllTeamMembers();
 
-        assertThat(teamMembers.size()).isEqualTo(2);
-        assertThat(teamMembers.get(0).getName()).isEqualTo("Team Member 1");
+        assertThat(teamMembers.size()).isEqualTo(12);
+        assertThat(teamMembers.get(0).getId()).isEqualTo(1);
         assertThat(teamMembers.get(0).getName()).isEqualTo(TEAM_MEMBER_NAME_1);
+        assertThat(teamMembers.get(0).getTicketsCollectedCurrentEvent()).isEqualTo(150);
+        assertThat(teamMembers.get(0).getJoinedTeam()).isEqualTo("01-01-2019");
+        assertThat(teamMembers.get(1).getId()).isEqualTo(2);
         assertThat(teamMembers.get(1).getName()).isEqualTo(TEAM_MEMBER_NAME_2);
+        assertThat(teamMembers.get(1).getTicketsCollectedCurrentEvent()).isEqualTo(123);
+        assertThat(teamMembers.get(1).getJoinedTeam()).isEqualTo("02-02-2019");
     }
 
     @Test
@@ -104,12 +109,12 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
         repository.addTeamMembers(teamMembers);
         List<TeamMember> allTeamMembers = repository.getAllTeamMembers();
 
-        assertThat(allTeamMembers.size()).isEqualTo(4);
+        assertThat(allTeamMembers.size()).isEqualTo(14);
 
         repository.deleteTeamMembersByName(teamMembers);
 
         allTeamMembers = repository.getAllTeamMembers();
-        assertThat(allTeamMembers.size()).isEqualTo(2);
+        assertThat(allTeamMembers.size()).isEqualTo(12);
     }
 
     @Test
