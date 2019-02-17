@@ -25,7 +25,7 @@ public class EventRepository {
                 .select()
                 .from(EVENT)
                 .where(EVENT.ID.eq(eventId))
-                .fetchOne(eventMapper);
+                .fetchOne(optionalEventMapper);
     }
 
     public Optional<Event> getEventByName(String name) {
@@ -33,6 +33,6 @@ public class EventRepository {
                 .select()
                 .from(EVENT)
                 .where(EVENT.NAME.eq(name))
-                .fetchOne(eventMapper);
+                .fetchOne(optionalEventMapper);
     }
 }
