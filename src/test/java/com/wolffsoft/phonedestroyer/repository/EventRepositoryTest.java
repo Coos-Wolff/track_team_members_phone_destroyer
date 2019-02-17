@@ -1,6 +1,7 @@
 package com.wolffsoft.phonedestroyer.repository;
 
 import com.wolffsoft.phonedestroyer.configuration.AbstractTestRepository;
+import com.wolffsoft.phonedestroyer.model.CreateEvent;
 import com.wolffsoft.phonedestroyer.model.Event;
 import org.jooq.DSLContext;
 import org.junit.Test;
@@ -32,5 +33,19 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
         Optional<Event> returnedEvent = repository.getEventByName(name);
 
         assertThat(returnedEvent.get().getName()).isEqualTo("Test Event 1");
+    }
+
+    @Test
+    public void testCreateNewEvent() {
+        CreateEvent createEvent = CreateEvent.builder()
+                .name("New Created Event")
+                .build();
+
+        repository.createNewEvent(createEvent);
+
+        Optional<Event> createdEvent = repository.getEventByName(createEvent.getName());
+
+        assertThat(createdEvent.get().getName()).isEqualTo(createEvent.getName());
+        assertThat(createdEvent.get().getName()).isEqualTo(createEvent.getName());
     }
 }
