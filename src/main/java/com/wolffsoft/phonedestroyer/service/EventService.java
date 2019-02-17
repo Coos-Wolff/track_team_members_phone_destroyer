@@ -5,6 +5,8 @@ import com.wolffsoft.phonedestroyer.model.Event;
 import com.wolffsoft.phonedestroyer.model.EventTicket;
 import com.wolffsoft.phonedestroyer.model.TeamMember;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
+import com.wolffsoft.phonedestroyer.repository.EventRepository;
+import com.wolffsoft.phonedestroyer.repository.EventTeamMemberRepository;
 import com.wolffsoft.phonedestroyer.repository.TeamMemberRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,19 @@ import java.util.Optional;
 @Service
 public class EventService {
 
+    private EventRepository eventRepository;
     private TeamMemberRepository teamMemberRepository;
     private EventHistoryRepository eventHistoryRepository;
+    private EventTeamMemberRepository eventTeamMemberRepository;
 
-    public EventService(TeamMemberRepository teamMemberRepository, EventHistoryRepository eventHistoryRepository) {
+    public EventService(EventRepository eventRepository,
+                        TeamMemberRepository teamMemberRepository,
+                        EventHistoryRepository eventHistoryRepository,
+                        EventTeamMemberRepository eventTeamMemberRepository) {
+        this.eventRepository = eventRepository;
         this.teamMemberRepository = teamMemberRepository;
         this.eventHistoryRepository = eventHistoryRepository;
+        this.eventTeamMemberRepository = eventTeamMemberRepository;
     }
 
     public List<EventTicket> getEventTicketsTeamMembersByEventName(String eventName) {
