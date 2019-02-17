@@ -16,7 +16,6 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberRepository> {
 
     private TeamMember teamMember3;

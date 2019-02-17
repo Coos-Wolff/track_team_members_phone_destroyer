@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 import static com.wolffsoft.phonedestroyer.model.InstantNowToString.instantToString;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TeamMemberTest {
 
     @Test
