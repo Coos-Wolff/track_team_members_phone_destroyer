@@ -3,13 +3,17 @@ package com.wolffsoft.phonedestroyer.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.wolffsoft.phonedestroyer.model.InstantNowToString.instantToString;
+import java.time.Instant;
+
+import static com.wolffsoft.phonedestroyer.model.InstantNow.formatInstantToString;
+import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TeamMemberTest {
 
+    private static final Instant INSTANT_NOW = instantNow();
     private static final String TEAM_MEMBER_NAME = "Team Member Name";
-    private static final  String DATE_JOINED = instantToString();
+    private static final  String DATE_JOINED = formatInstantToString(INSTANT_NOW);
     private static final int TICKETS_COLLECTED = 12;
     private static final int ID = 1;
 
