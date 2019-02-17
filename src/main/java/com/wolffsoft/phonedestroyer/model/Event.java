@@ -11,6 +11,7 @@ import static com.wolffsoft.phonedestroyer.model.InstantNowToString.instantToStr
 @Builder
 public class Event {
     private String name;
+    @Builder.Default
     private String eventDate = instantToString();
     private List<TeamMember> teamMembers;
 }
