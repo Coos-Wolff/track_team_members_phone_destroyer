@@ -1,13 +1,11 @@
 package com.wolffsoft.phonedestroyer.repository;
 
-import com.wolffsoft.phonedestroyer.model.EventTicket;
 import com.wolffsoft.phonedestroyer.model.TeamMember;
 import com.wolffsoft.phonedestroyer.repository.mapper.OptionalTeamMemberMapper;
 import com.wolffsoft.phonedestroyer.repository.mapper.TeamMemberMapper;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,20 +59,6 @@ public class TeamMemberRepository {
 
     public void deleteTeamMembersByName(List<TeamMember> teamMembers) {
         teamMembers.forEach(teamMember -> deleteTeamMemberByName(teamMember.getName()));
-    }
-
-    public List<EventTicket> getEventTicketsTeamMembersByEventName(String eventName) {
-        List<EventTicket> eventTickets = new ArrayList<>();
-        getTeamMembersByEventName(eventName)
-                .forEach(teamMember -> {
-                    EventTicket eventTicket = EventTicket.builder()
-                            .teamMemberName(teamMember.getName())
-                            .amountEventTickets(teamMember.getTicketsCollectedCurrentEvent())
-                            .build();
-                    eventTickets.add(eventTicket);
-                });
-
-        return eventTickets;
     }
 
     public List<TeamMember> getTeamMembersByEventName(String eventName) {
