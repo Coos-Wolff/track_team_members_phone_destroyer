@@ -1,4 +1,4 @@
-package com.wolffsoft.phonedestroyer.model.configuration;
+package com.wolffsoft.phonedestroyer.configuration;
 
 import org.flywaydb.core.Flyway;
 import org.h2.jdbcx.JdbcDataSource;
