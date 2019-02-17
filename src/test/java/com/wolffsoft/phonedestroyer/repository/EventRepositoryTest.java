@@ -11,7 +11,6 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
 public class EventRepositoryTest extends AbstractTestRepository<EventRepository> {
 
     @Override
