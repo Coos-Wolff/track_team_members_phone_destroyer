@@ -4,16 +4,14 @@ import com.wolffsoft.phonedestroyer.model.Event;
 import org.jooq.Record;
 import org.jooq.RecordMapper;
 
-import java.util.Optional;
-
 import static com.wolffsoft.phonedestroyer.persistance.repositories.jooq.Tables.EVENT;
 
-public class EventMapper implements RecordMapper<Record, Optional<Event>> {
+public class EventMapper implements RecordMapper<Record, Event> {
 
     @Override
-    public Optional<Event> map(Record record) {
-        return Optional.of(Event.builder()
+    public Event map(Record record) {
+        return Event.builder()
                 .name(record.get(EVENT.NAME))
-                .build());
+                .build();
     }
 }
