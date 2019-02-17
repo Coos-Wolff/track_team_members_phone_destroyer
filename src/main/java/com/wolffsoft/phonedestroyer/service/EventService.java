@@ -1,5 +1,6 @@
 package com.wolffsoft.phonedestroyer.service;
 
+import com.wolffsoft.phonedestroyer.model.CreateEvent;
 import com.wolffsoft.phonedestroyer.model.Event;
 import com.wolffsoft.phonedestroyer.model.EventTicket;
 import com.wolffsoft.phonedestroyer.model.TeamMember;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -40,5 +42,19 @@ public class EventService {
     public void endEventAndStoreEventHistory(Event event) {
         List<TeamMember> teamMembers = teamMemberRepository.getTeamMembersByEventName(event.getName());
         teamMembers.forEach(teamMember -> eventHistoryRepository.storeEventHistoryByTeamMember(teamMember, event));
+    }
+
+    public void createNewEventAndAddCurrentTeamMembers(String eventName) {
+        CreateEvent createEvent = CreateEvent.builder()
+                .name(eventName)
+                .build();
+
+        eventRepository.createNewEvent(createEvent);
+
+        List<TeamMember> teamMembers = teamMemberRepository.getAllTeamMembers();
+        Optional<Event> event = eventRepository.getEventByName(eventName);
+
+        event.ifPresent(createdEvent -> teamMembers
+                .forEach(teamMember -> eventTeamMemberRepository.storeEventIdAndTeamMemberId(createdEvent, teamMember)));
     }
 }
