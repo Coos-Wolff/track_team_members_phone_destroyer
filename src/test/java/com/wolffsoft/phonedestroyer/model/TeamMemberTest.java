@@ -16,10 +16,6 @@ public class TeamMemberTest {
 
     @Test
     public void testTeamMember() {
-        Event event1 = Event.builder().name("Test Event 1").build();
-        Event event2 = Event.builder().name("Test Event 2").build();
-        Event event3 = Event.builder().name("Test Event 3").build();
-
         TeamMember teamMember = TeamMember.builder()
                 .name("TestMember")
                 .ticketsCollectedCurrentEvent(150)
