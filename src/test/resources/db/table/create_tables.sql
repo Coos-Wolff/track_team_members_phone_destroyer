@@ -27,3 +27,16 @@ CREATE TABLE event_team_member
   FOREIGN KEY (team_member_id) REFERENCES team_member (id) ON DELETE RESTRICT ON UPDATE CASCADE,
   PRIMARY KEY (event_id, team_member_id)
 );
+
+DROP TABLE IF EXISTS event_history;
+CREATE TABLE event_history
+(
+  id                      INT          NOT NULL AUTO_INCREMENT,
+  team_member_id          INT(30)      NOT NULL,
+  event_id                INT(20)      NOT NULL,
+  event_tickets_collected INT(6),
+  FOREIGN KEY (team_member_id) REFERENCES team_member (id),
+  event_name              VARCHAR(255) NOT NULL,
+  FOREIGN KEY (event_id) REFERENCES event (id),
+  PRIMARY KEY (id)
+);
