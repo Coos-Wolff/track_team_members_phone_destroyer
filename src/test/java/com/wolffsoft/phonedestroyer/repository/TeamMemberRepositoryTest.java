@@ -76,7 +76,7 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
     public void testGetAllTeamMembers() {
         List<TeamMember> teamMembers = repository.getAllTeamMembers();
 
-        assertThat(teamMembers.size()).isEqualTo(12);
+        assertThat(teamMembers.size()).isEqualTo(13);
         assertThat(teamMembers.get(0).getId()).isEqualTo(1);
         assertThat(teamMembers.get(0).getName()).isEqualTo(TEAM_MEMBER_NAME_1);
         assertThat(teamMembers.get(0).getTicketsCollectedCurrentEvent()).isEqualTo(150);
@@ -107,12 +107,12 @@ public class TeamMemberRepositoryTest extends AbstractTestRepository<TeamMemberR
         repository.addTeamMembers(teamMembers);
         List<TeamMember> allTeamMembers = repository.getAllTeamMembers();
 
-        assertThat(allTeamMembers.size()).isEqualTo(14);
+        assertThat(allTeamMembers.size()).isEqualTo(15);
 
         repository.deleteTeamMembersByName(teamMembers);
 
         allTeamMembers = repository.getAllTeamMembers();
-        assertThat(allTeamMembers.size()).isEqualTo(12);
+        assertThat(allTeamMembers.size()).isEqualTo(13);
     }
 
     @Test
