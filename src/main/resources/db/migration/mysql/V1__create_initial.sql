@@ -22,9 +22,9 @@ CREATE TABLE team
 DROP TABLE IF EXISTS team_member;
 CREATE TABLE team_member
 (
-  id          INT         NOT NULL AUTO_INCREMENT,
-  name        VARCHAR(255),
-  date_joined VARCHAR(30) NOT NULL,
+  id                              INT         NOT NULL AUTO_INCREMENT,
+  name                            VARCHAR(255),
+  date_joined                     VARCHAR(30) NOT NULL,
   tickets_collected_current_event INT(6)      NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 );

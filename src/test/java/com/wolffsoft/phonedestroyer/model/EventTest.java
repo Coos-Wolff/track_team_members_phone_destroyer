@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EventTest {
 
     private static final String EVENT_NAME = "TestEvent";
+
     private Event testEvent;
 
     @Before
