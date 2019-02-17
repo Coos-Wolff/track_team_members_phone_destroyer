@@ -39,8 +39,6 @@ public class TeamMemberTest {
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
                 .build();
 
-        assertThat(teamMember.getName()).isEqualTo("TestMember");
-        assertThat(teamMember.getJoinedTeam()).isEqualTo(instantToString());
-        assertThat(teamMember.getTicketsCollectedCurrentEvent()).isEqualTo(150);
+        assertThat(teamMember).isEqualTo(testTeamMember);
     }
 }
