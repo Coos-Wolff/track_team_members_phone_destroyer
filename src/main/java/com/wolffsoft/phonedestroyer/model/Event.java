@@ -11,6 +11,8 @@ import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 @Value
 @Builder
 public class Event {
+
+    private int id;
     private String name;
     @Builder.Default
     private String eventDate = formatInstantToString(instantNow());
