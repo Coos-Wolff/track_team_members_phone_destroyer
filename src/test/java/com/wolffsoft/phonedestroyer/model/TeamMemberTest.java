@@ -17,6 +17,19 @@ public class TeamMemberTest {
     private static final  String DATE_JOINED = instantToString();
     private static final int TICKETS_COLLECTED = 12;
     private static final int ID = 1;
+
+    private TeamMember testTeamMember;
+
+    @Before
+    public void setup() {
+        testTeamMember = TeamMember.builder()
+                .id(ID)
+                .name(TEAM_MEMBER_NAME)
+                .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
+                .joinedTeam(DATE_JOINED)
+                .build();
+    }
+
     @Test
     public void testTeamMember() {
         TeamMember teamMember = TeamMember.builder()
