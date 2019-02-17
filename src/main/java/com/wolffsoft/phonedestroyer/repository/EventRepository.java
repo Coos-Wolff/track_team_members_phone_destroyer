@@ -18,6 +18,11 @@ public class EventRepository {
     public EventRepository(DSLContext dslContext) {
         this.dslContext = dslContext;
         this.eventMapper = new EventMapper();
+    public void createNewEvent(CreateEvent createEvent) {
+        dslContext
+                .insertInto(EVENT, EVENT.NAME, EVENT.EVENT_DATE)
+                .values(createEvent.getName(), createEvent.getEventDate())
+                .execute();
     }
 
     public Optional<Event> getEventById(int eventId) {
