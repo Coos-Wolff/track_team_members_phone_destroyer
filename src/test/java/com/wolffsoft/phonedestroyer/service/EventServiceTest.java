@@ -15,8 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.wolffsoft.phonedestroyer.helperclass.model.EventHistoryTestObject.getTestEventHistories;
 import static com.wolffsoft.phonedestroyer.helperclass.model.TeamMemberTestObject.*;
@@ -34,6 +32,9 @@ public class EventServiceTest {
 
     @Mock
     private MemberRepository memberRepository;
+
+    @Mock
+    private EventHistoryRepository eventHistoryRepository;
 
     private List<Member> testMembers;
     private List<EventHistory> testEventHistories;
@@ -74,7 +75,7 @@ public class EventServiceTest {
     }
 
     @Test
-    public void testEndEventAndStoreEventHistory() {
+    public void testStoreEventHistory() {
         Event event = Event.builder()
                 .id(1)
                 .name("Test Event")
@@ -86,19 +87,22 @@ public class EventServiceTest {
         eventService.storeEventHistory(event);
         List<EventHistory> returnedEventHistory = eventHistoryRepository.getAllEventHistories();
 
-        List<EventHistory> eventHistories = Stream.of(eventHistory1, eventHistory2, eventHistory3).collect(Collectors.toList());
+        returnedEventHistory.forEach(eventHistory ->
+                assertThat(eventHistory.getEventId()).isEqualTo(event.getId()));
+        assertThat(returnedEventHistory.get(0).getMemberId()).isEqualTo(testMember1.getId());
+        assertThat(returnedEventHistory.get(1).getMemberId()).isEqualTo(testMember2.getId());
+        assertThat(returnedEventHistory.get(2).getMemberId()).isEqualTo(testMember3.getId());
+    }
 
-        when(teamMemberRepository.getTeamMembersByEventName(event.getName())).thenReturn(teamMembers);
-        when(eventHistoryRepository.getAllEventHistories()).thenReturn(eventHistories);
+    // TODO Complete this test.
+    //  Make sure EventId and TeamMemberId are added to the event_team_member table.
+    //  Also make sure that all team members are added to the new event.
+    @Test
+    public void testCreateNewEventAddTeamMembersSetTicketsToZero() {
+        String eventName = "New created Test Event";
 
         when(memberRepository.getAllMembers()).thenReturn(testMembers);
-        List<EventHistory> returnedEventHistory = eventHistoryRepository.getAllEventHistories();
 
-        assertThat(returnedEventHistory.get(0).getEventId()).isEqualTo(event.getId());
-        assertThat(returnedEventHistory.get(1).getEventId()).isEqualTo(event.getId());
-        assertThat(returnedEventHistory.get(2).getEventId()).isEqualTo(event.getId());
-        assertThat(returnedEventHistory.get(0).getTeamMemberId()).isEqualTo(teamMember1.getId());
-        assertThat(returnedEventHistory.get(1).getTeamMemberId()).isEqualTo(teamMember2.getId());
-        assertThat(returnedEventHistory.get(2).getTeamMemberId()).isEqualTo(teamMember3.getId());
+        eventService.createNewEventAddMembersSetTicketsToZero(eventName);
     }
 }
