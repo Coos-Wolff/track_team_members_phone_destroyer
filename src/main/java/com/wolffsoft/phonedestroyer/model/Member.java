@@ -8,7 +8,7 @@ import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 
 @Value
 @Builder
-public class TeamMember {
+public class Member {
 
     private int id;
     @Builder.Default

@@ -40,7 +40,7 @@ public abstract class AbstractTestRepository<RepositoryType> {
         jdbi = Jdbi.create(dataSource);
         runDbScript("/db/table/create_tables.sql");
         runDbScript("/db/data/event_data.sql");
-        runDbScript("/db/data/team_member_data.sql");
+        runDbScript("/db/data/member_data.sql");
         runDbScript("/db/data/event_team_member_data.sql");
         runDbScript("/db/data/event_history_data.sql");
 

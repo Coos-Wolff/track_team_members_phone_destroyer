@@ -15,7 +15,7 @@ public class EventTicketTest {
     @Before
     public void setup() {
         testEventTicket = EventTicket.builder()
-                .teamMemberName(TEAM_MEMBER_NAME)
+                .memberName(TEAM_MEMBER_NAME)
                 .amountEventTickets(AMOUNT_EVENT_TICKETS)
                 .build();
     }
@@ -23,7 +23,7 @@ public class EventTicketTest {
     @Test
     public void testEventTicket() {
         EventTicket eventTicket = EventTicket.builder()
-                .teamMemberName(TEAM_MEMBER_NAME)
+                .memberName(TEAM_MEMBER_NAME)
                 .amountEventTickets(AMOUNT_EVENT_TICKETS)
                 .build();
 

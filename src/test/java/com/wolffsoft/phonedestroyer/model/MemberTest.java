@@ -9,7 +9,7 @@ import static com.wolffsoft.phonedestroyer.model.InstantNow.formatInstantToStrin
 import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TeamMemberTest {
+public class MemberTest {
 
     private static final Instant INSTANT_NOW = instantNow();
     private static final String TEAM_MEMBER_NAME = "Team Member Name";
@@ -17,11 +17,11 @@ public class TeamMemberTest {
     private static final int TICKETS_COLLECTED = 12;
     private static final int ID = 1;
 
-    private TeamMember testTeamMember;
+    private Member testMember;
 
     @Before
     public void setup() {
-        testTeamMember = TeamMember.builder()
+        testMember = Member.builder()
                 .id(ID)
                 .name(TEAM_MEMBER_NAME)
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
@@ -31,13 +31,13 @@ public class TeamMemberTest {
 
     @Test
     public void testTeamMember() {
-        TeamMember teamMember = TeamMember.builder()
+        Member member = Member.builder()
                 .id(ID)
                 .name(TEAM_MEMBER_NAME)
                 .joinedTeam(DATE_JOINED)
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
                 .build();
 
-        assertThat(teamMember).isEqualTo(testTeamMember);
+        assertThat(member).isEqualTo(testMember);
     }
 }

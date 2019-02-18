@@ -19,7 +19,7 @@ public class EventHistoryTest {
         testEventHistory = EventHistory.builder()
                 .eventName(EVENT_NAME)
                 .eventId(EVENT_ID)
-                .teamMemberId(TEAM_MEMBER_ID)
+                .memberId(TEAM_MEMBER_ID)
                 .eventTicketsCollected(EVENT_TICKETS_COLLECTED)
                 .build();
     }
@@ -29,7 +29,7 @@ public class EventHistoryTest {
         EventHistory eventHistory = EventHistory.builder()
                 .eventName(EVENT_NAME)
                 .eventId(EVENT_ID)
-                .teamMemberId(TEAM_MEMBER_ID)
+                .memberId(TEAM_MEMBER_ID)
                 .eventTicketsCollected(EVENT_TICKETS_COLLECTED)
                 .build();
 

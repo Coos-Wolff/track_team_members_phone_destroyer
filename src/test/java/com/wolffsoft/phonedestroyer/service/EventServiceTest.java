@@ -3,9 +3,11 @@ package com.wolffsoft.phonedestroyer.service;
 import com.wolffsoft.phonedestroyer.model.Event;
 import com.wolffsoft.phonedestroyer.model.EventHistory;
 import com.wolffsoft.phonedestroyer.model.EventTicket;
-import com.wolffsoft.phonedestroyer.model.TeamMember;
+import com.wolffsoft.phonedestroyer.model.Member;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
-import com.wolffsoft.phonedestroyer.repository.TeamMemberRepository;
+import com.wolffsoft.phonedestroyer.repository.EventRepository;
+import com.wolffsoft.phonedestroyer.repository.EventMemberRepository;
+import com.wolffsoft.phonedestroyer.repository.MemberRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,13 +25,13 @@ import static org.mockito.Mockito.when;
 public class EventServiceTest {
 
     @Mock
-    private TeamMemberRepository teamMemberRepository;
+    private EventRepository eventRepository;
 
     @Mock
-    private EventHistoryRepository eventHistoryRepository;
+    private EventMemberRepository eventMemberRepository;
 
     private TeamMember teamMember1;
-    private TeamMember teamMember2;
+    private MemberRepository memberRepository;
     private TeamMember teamMember3;
 
     private EventService eventService;
@@ -61,21 +63,22 @@ public class EventServiceTest {
         List<TeamMember> teamMembers = Stream.of(teamMember1, teamMember2, teamMember3)
                 .collect(Collectors.toList());
 
-        when(teamMemberRepository.getTeamMembersByEventName(eventName)).thenReturn(teamMembers);
+        when(memberRepository.getMembersByEventName(eventName)).thenReturn(testMembers);
 
-        List<EventTicket> returnedEventTickets = eventService.getEventTicketsTeamMembersByEventName(eventName);
+        List<EventTicket> returnedEventTickets = eventService
+                .getEventTicketsTeamMembersByEventName(eventName);
 
-        assertThat(returnedEventTickets.get(0).getTeamMemberName()).isEqualTo(teamMember1.getName());
+        assertThat(returnedEventTickets.get(0).getMemberName()).isEqualTo(testMember1.getName());
         assertThat(returnedEventTickets.get(0).getAmountEventTickets())
-                .isEqualTo(teamMember1.getTicketsCollectedCurrentEvent());
+                .isEqualTo(testMember1.getTicketsCollectedCurrentEvent());
 
-        assertThat(returnedEventTickets.get(1).getTeamMemberName()).isEqualTo(teamMember2.getName());
+        assertThat(returnedEventTickets.get(1).getMemberName()).isEqualTo(testMember2.getName());
         assertThat(returnedEventTickets.get(1).getAmountEventTickets())
-                .isEqualTo(teamMember2.getTicketsCollectedCurrentEvent());
+                .isEqualTo(testMember2.getTicketsCollectedCurrentEvent());
 
-        assertThat(returnedEventTickets.get(2).getTeamMemberName()).isEqualTo(teamMember3.getName());
+        assertThat(returnedEventTickets.get(2).getMemberName()).isEqualTo(testMember3.getName());
         assertThat(returnedEventTickets.get(2).getAmountEventTickets())
-                .isEqualTo(teamMember3.getTicketsCollectedCurrentEvent());
+                .isEqualTo(testMember3.getTicketsCollectedCurrentEvent());
     }
 
     @Test
@@ -84,7 +87,7 @@ public class EventServiceTest {
         Event event = Event.builder()
                 .id(1)
                 .name("Test Event")
-                .teamMembers(teamMembers)
+                .members(testMembers)
                 .build();
 
         EventHistory eventHistory1 = EventHistory.builder()
@@ -111,7 +114,7 @@ public class EventServiceTest {
         when(teamMemberRepository.getTeamMembersByEventName(event.getName())).thenReturn(teamMembers);
         when(eventHistoryRepository.getAllEventHistories()).thenReturn(eventHistories);
 
-        eventService.endEventAndStoreEventHistory(event);
+        when(memberRepository.getAllMembers()).thenReturn(testMembers);
         List<EventHistory> returnedEventHistory = eventHistoryRepository.getAllEventHistories();
 
         assertThat(returnedEventHistory.get(0).getEventId()).isEqualTo(event.getId());

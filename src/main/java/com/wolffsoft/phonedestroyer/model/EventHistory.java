@@ -9,7 +9,7 @@ public class EventHistory {
 
     private String eventName;
     private int id;
-    private int teamMemberId;
+    private int memberId;
     private int eventId;
     private int eventTicketsCollected;
 }

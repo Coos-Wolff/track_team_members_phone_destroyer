@@ -16,5 +16,5 @@ public class Event {
     private String name;
     @Builder.Default
     private String eventDate = formatInstantToString(instantNow());
-    private List<TeamMember> teamMembers;
+    private List<Member> members;
 }
