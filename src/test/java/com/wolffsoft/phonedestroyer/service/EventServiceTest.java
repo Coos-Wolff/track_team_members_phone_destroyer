@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.wolffsoft.phonedestroyer.helperclass.model.EventHistoryTestObject.getTestEventHistories;
+import static com.wolffsoft.phonedestroyer.helperclass.model.TeamMemberTestObject.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -30,38 +32,28 @@ public class EventServiceTest {
     @Mock
     private EventMemberRepository eventMemberRepository;
 
-    private TeamMember teamMember1;
+    @Mock
     private MemberRepository memberRepository;
-    private TeamMember teamMember3;
 
+    private List<Member> testMembers;
+    private List<EventHistory> testEventHistories;
     private EventService eventService;
 
     @Before
     public void setup() {
-        teamMember1 = TeamMember.builder()
-                .id(1)
-                .name("Team Member Name 1")
-                .ticketsCollectedCurrentEvent(150)
-                .build();
-        teamMember2 = TeamMember.builder()
-                .id(2)
-                .name("Team Member Name 2")
-                .ticketsCollectedCurrentEvent(12)
-                .build();
-        teamMember3 = TeamMember.builder()
-                .id(1)
-                .name("Team Member Name 3")
-                .ticketsCollectedCurrentEvent(1456)
-                .build();
-
-        eventService = new EventService(teamMemberRepository, eventHistoryRepository);
+        testMembers = getTestTeamMembers();
+        testEventHistories = getTestEventHistories();
+        eventService = new EventService(
+                eventRepository,
+                memberRepository,
+                eventHistoryRepository,
+                eventMemberRepository
+        );
     }
 
     @Test
     public void testGetEventTicketsOfTeamMembersByEvent() {
         String eventName = "Test Event 1";
-        List<TeamMember> teamMembers = Stream.of(teamMember1, teamMember2, teamMember3)
-                .collect(Collectors.toList());
 
         when(memberRepository.getMembersByEventName(eventName)).thenReturn(testMembers);
 
@@ -83,31 +75,16 @@ public class EventServiceTest {
 
     @Test
     public void testEndEventAndStoreEventHistory() {
-        List<TeamMember> teamMembers = Stream.of(teamMember1, teamMember2, teamMember3).collect(Collectors.toList());
         Event event = Event.builder()
                 .id(1)
                 .name("Test Event")
                 .members(testMembers)
                 .build();
 
-        EventHistory eventHistory1 = EventHistory.builder()
-                .eventId(event.getId())
-                .eventName(event.getName())
-                .teamMemberId(teamMember1.getId())
-                .eventTicketsCollected(teamMember1.getTicketsCollectedCurrentEvent())
-                .build();
-        EventHistory eventHistory2 = EventHistory.builder()
-                .eventId(event.getId())
-                .eventName(event.getName())
-                .teamMemberId(teamMember2.getId())
-                .eventTicketsCollected(teamMember2.getTicketsCollectedCurrentEvent())
-                .build();
-        EventHistory eventHistory3 = EventHistory.builder()
-                .eventId(event.getId())
-                .eventName(event.getName())
-                .teamMemberId(teamMember3.getId())
-                .eventTicketsCollected(teamMember3.getTicketsCollectedCurrentEvent())
-                .build();
+        when(eventHistoryRepository.getAllEventHistories()).thenReturn(testEventHistories);
+
+        eventService.storeEventHistory(event);
+        List<EventHistory> returnedEventHistory = eventHistoryRepository.getAllEventHistories();
 
         List<EventHistory> eventHistories = Stream.of(eventHistory1, eventHistory2, eventHistory3).collect(Collectors.toList());
 
