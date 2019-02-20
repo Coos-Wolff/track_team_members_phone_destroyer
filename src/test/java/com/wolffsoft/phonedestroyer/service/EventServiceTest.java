@@ -152,6 +152,9 @@ public class EventServiceTest {
 
         verify(eventRepository, times(1)).endEvent(eventArgumentCaptor.capture());
         verify(memberRepository, times(3)).setTicketsToZero(memberArgumentCaptor.capture());
+        testMembers.forEach(testMember ->
+                verify(eventHistoryRepository, times(3))
+                        .storeEventHistory(memberArgumentCaptor.capture(), eventArgumentCaptor.capture()));
 
         List<Member> capturedMembers = memberArgumentCaptor.getAllValues();
         Event capturedEvent = eventArgumentCaptor.getValue();
