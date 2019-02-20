@@ -156,7 +156,7 @@ public class EventServiceTest {
         List<Member> capturedMembers = memberArgumentCaptor.getAllValues();
         Event capturedEvent = eventArgumentCaptor.getValue();
 
-        assertThat(capturedMembers).isEqualTo(testMembers);
+        assertThat(capturedMembers).containsSequence(testMembers);
         assertThat(capturedEvent).isEqualTo(event);
     }
 }
