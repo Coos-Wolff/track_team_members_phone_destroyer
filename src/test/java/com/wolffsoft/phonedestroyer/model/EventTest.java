@@ -22,6 +22,7 @@ public class EventTest {
                 .name(EVENT_NAME)
                 .members(testMembers)
                 .eventHasEnded(false)
+                .eventType("Tickets")
                 .build();
 
         testEndedEvent = Event.builder()
@@ -29,6 +30,7 @@ public class EventTest {
                 .members(testMembers)
                 .name(EVENT_NAME)
                 .eventHasEnded(true)
+                .eventType("Points")
                 .build();
     }
 
@@ -39,6 +41,7 @@ public class EventTest {
                 .name(EVENT_NAME)
                 .members(testMembers)
                 .eventHasEnded(false)
+                .eventType("Tickets")
                 .build();
 
         assertThat(event).isEqualTo(testCurrentEvent);
@@ -50,6 +53,7 @@ public class EventTest {
                 .id(1)
                 .name(EVENT_NAME)
                 .members(testMembers)
+                .eventType("Points")
                 .eventHasEnded(true)
                 .build();
 

@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS event
   event_date VARCHAR(30)  NOT NULL,
   name       VARCHAR(255) NOT NULL,
   has_ended  BOOLEAN      NOT NULL DEFAULT FALSE,
+  event_type VARCHAR(10)  NOT NULL,
   PRIMARY KEY (id)
 );
 

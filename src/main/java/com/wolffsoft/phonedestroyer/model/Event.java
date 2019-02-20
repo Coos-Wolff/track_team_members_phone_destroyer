@@ -14,6 +14,7 @@ public class Event {
 
     private int id;
     private String name;
+    private String eventType;
     @Builder.Default
     private String eventDate = formatInstantToString(instantNow());
     private List<Member> members;
