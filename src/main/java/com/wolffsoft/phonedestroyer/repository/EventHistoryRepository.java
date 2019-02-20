@@ -52,7 +52,7 @@ public class EventHistoryRepository {
         return dslContext
                 .select()
                 .from(EVENT_HISTORY)
-                .groupBy(EVENT_HISTORY.ID)
+                .orderBy(EVENT_HISTORY.ID)
                 .fetch(eventHistoryMapper);
     }
 }
