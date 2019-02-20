@@ -15,6 +15,10 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
+    public void addMember(Member member) {
+        memberRepository.addMember(member);
+    }
+
     public List<Member> getMembersByEvent(String eventName) {
         return memberRepository.getMembersByEventName(eventName);
     }
