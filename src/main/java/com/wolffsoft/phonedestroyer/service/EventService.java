@@ -1,18 +1,18 @@
 package com.wolffsoft.phonedestroyer.service;
 
-import com.wolffsoft.phonedestroyer.model.CreateEvent;
-import com.wolffsoft.phonedestroyer.model.Event;
-import com.wolffsoft.phonedestroyer.model.EventTicket;
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.*;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
-import com.wolffsoft.phonedestroyer.repository.EventRepository;
 import com.wolffsoft.phonedestroyer.repository.EventMemberRepository;
+import com.wolffsoft.phonedestroyer.repository.EventRepository;
 import com.wolffsoft.phonedestroyer.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -75,5 +75,29 @@ public class EventService {
             memberRepository.setTicketsToZero(member);
             eventHistoryRepository.storeEventHistory(member, event);
         });
+    }
+
+    public List<Member> calculateMembersToBeKicked() {
+        List<Member> membersToBeKicked = new ArrayList<>();
+        List<String> memberNames = new ArrayList<>();
+        List<Event> lastTwoEvents = eventRepository.getLastTwoEvents();
+        String eventName1 = lastTwoEvents.get(0).getName();
+        String eventName2 = lastTwoEvents.get(1).getName();
+
+        List<EventHistory> eventHistoryLastTwoEvents = eventHistoryRepository
+                .getEventHistoryOfLastTwoEvents(eventName1, eventName2);
+
+        eventHistoryLastTwoEvents.removeIf(eventHistory -> eventHistory.getEventTicketsCollected() > 50);
+
+        eventHistoryLastTwoEvents.forEach(eventHistory -> memberNames.add(eventHistory.getMemberName()));
+        memberNames.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .filter(name -> name.getValue() > 1L)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList())
+                .forEach(name -> memberRepository.getMemberByName(name).ifPresent(membersToBeKicked::add));
+
+        return membersToBeKicked;
     }
 }
