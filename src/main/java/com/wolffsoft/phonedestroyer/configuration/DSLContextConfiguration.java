@@ -26,7 +26,6 @@ public class DSLContextConfiguration {
 
     @Primary
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource(@Qualifier("dataSourceProperties") DataSourceProperties properties) {
         return properties.initializeDataSourceBuilder().build();
     }

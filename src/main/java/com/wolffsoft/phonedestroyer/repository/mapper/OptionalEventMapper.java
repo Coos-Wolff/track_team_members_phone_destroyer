@@ -8,12 +8,15 @@ import java.util.Optional;
 
 import static com.wolffsoft.phonedestroyer.persistance.repositories.jooq.Tables.EVENT;
 
-public class EventMapper implements RecordMapper<Record, Optional<Event>> {
+public class OptionalEventMapper implements RecordMapper<Record, Optional<Event>> {
 
     @Override
     public Optional<Event> map(Record record) {
         return Optional.of(Event.builder()
+                .id(record.get(EVENT.ID))
                 .name(record.get(EVENT.NAME))
+                .eventDate(record.get(EVENT.EVENT_DATE))
+                .eventHasEnded(record.get(EVENT.HAS_ENDED))
                 .build());
     }
 }
