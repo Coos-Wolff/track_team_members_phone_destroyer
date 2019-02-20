@@ -49,7 +49,7 @@ public class EventService {
 
     public void storeEventHistory(Event event) {
         List<Member> members = memberRepository.getMembersByEventName(event.getName());
-        members.forEach(teamMember -> eventHistoryRepository.storeEventHistoryByTeamMember(teamMember, event));
+        members.forEach(teamMember -> eventHistoryRepository.storeEventHistory(teamMember, event));
     }
 
     public void createNewEvent(String eventName) {

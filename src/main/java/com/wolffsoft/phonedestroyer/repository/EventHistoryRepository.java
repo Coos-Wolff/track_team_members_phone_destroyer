@@ -23,7 +23,7 @@ public class EventHistoryRepository {
         this.eventHistoryMapper = new EventHistoryMapper();
     }
 
-    public void storeEventHistoryByTeamMember(Member member, Event event) {
+    public void storeEventHistory(Member member, Event event) {
         dslContext
                 .insertInto(EVENT_HISTORY,
                         EVENT_HISTORY.EVENT_ID,

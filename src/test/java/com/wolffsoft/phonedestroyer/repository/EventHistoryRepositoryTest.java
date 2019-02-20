@@ -55,7 +55,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
                 .members(members)
                 .build();
 
-        repository.storeEventHistoryByTeamMember(member, event);
+        repository.storeEventHistory(member, event);
 
         Optional<EventHistory> returnedEventHistory = repository.getEventHistoryByTeamMemberAndEvent(member, event);
 
