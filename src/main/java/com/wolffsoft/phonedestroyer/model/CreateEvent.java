@@ -10,6 +10,12 @@ import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 @Builder
 public class CreateEvent {
 
+    public static CreateEvent create(String name) {
+        return CreateEvent.builder()
+                .name(name)
+                .build();
+    }
+
     private String name;
     @Builder.Default
     private String eventDate = formatInstantToString(instantNow());
