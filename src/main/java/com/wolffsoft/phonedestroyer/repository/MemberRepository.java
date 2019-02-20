@@ -80,4 +80,12 @@ public class MemberRepository {
                 .set(MEMBER.TICKETS_COLLECTED_CURRENT_EVENT, 0)
                 .where(MEMBER.ID.eq(member.getId()));
     }
+
+    public void setTicketsCollected(Member member) {
+        dslContext
+                .update(MEMBER)
+                .set(MEMBER.TICKETS_COLLECTED_CURRENT_EVENT, member.getTicketsCollectedCurrentEvent())
+                .where(MEMBER.ID.eq(member.getId()))
+                .execute();
+    }
 }
