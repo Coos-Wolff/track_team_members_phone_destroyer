@@ -1,7 +1,8 @@
 package com.wolffsoft.phonedestroyer.repository;
 
+import com.wolffsoft.phonedestroyer.model.CreateEvent;
 import com.wolffsoft.phonedestroyer.model.Event;
-import com.wolffsoft.phonedestroyer.repository.mapper.EventMapper;
+import com.wolffsoft.phonedestroyer.repository.mapper.OptionalEventMapper;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
@@ -13,11 +14,18 @@ import static com.wolffsoft.phonedestroyer.persistance.repositories.jooq.Tables.
 public class EventRepository {
 
     private DSLContext dslContext;
-    private EventMapper eventMapper;
+    private OptionalEventMapper optionalEventMapper;
 
     public EventRepository(DSLContext dslContext) {
         this.dslContext = dslContext;
-        this.eventMapper = new EventMapper();
+        this.optionalEventMapper = new OptionalEventMapper();
+    }
+
+    public void createNewEvent(CreateEvent createEvent) {
+        dslContext
+                .insertInto(EVENT, EVENT.NAME, EVENT.EVENT_DATE)
+                .values(createEvent.getName(), createEvent.getEventDate())
+                .execute();
     }
 
     public Optional<Event> getEventById(int eventId) {
@@ -25,7 +33,7 @@ public class EventRepository {
                 .select()
                 .from(EVENT)
                 .where(EVENT.ID.eq(eventId))
-                .fetchOne(eventMapper);
+                .fetchOne(optionalEventMapper);
     }
 
     public Optional<Event> getEventByName(String name) {
@@ -33,6 +41,14 @@ public class EventRepository {
                 .select()
                 .from(EVENT)
                 .where(EVENT.NAME.eq(name))
-                .fetchOne(eventMapper);
+                .fetchOne(optionalEventMapper);
+    }
+
+    public void endEvent(Event event) {
+        dslContext
+                .update(EVENT)
+                .set(EVENT.HAS_ENDED, true)
+                .where(EVENT.NAME.eq(event.getName()))
+                .execute();
     }
 }

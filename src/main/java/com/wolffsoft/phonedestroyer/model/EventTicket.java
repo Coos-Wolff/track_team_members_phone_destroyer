@@ -7,6 +7,6 @@ import lombok.Value;
 @Builder
 public class EventTicket {
 
-    private String name;
+    private String memberName;
     private int amountEventTickets;
 }
