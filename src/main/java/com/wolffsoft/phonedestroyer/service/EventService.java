@@ -58,7 +58,6 @@ public class EventService {
 
         eventRepository.createNewEvent(createEvent);
 
-        members.forEach(teamMember -> memberRepository.setTicketsToZero(teamMember));
         Optional<Event> event = eventRepository.getEventByName(eventName);
 
         event.ifPresent(createdEvent -> members.forEach(teamMember ->
@@ -67,5 +66,11 @@ public class EventService {
 
     public Optional<Event> getEventByName(String eventName) {
         return eventRepository.getEventByName(eventName);
+    }
+
+    public void endEvent(Event event) {
+        eventRepository.endEvent(event);
+        List<Member> members = memberRepository.getAllMembers();
+        members.forEach(teamMember -> memberRepository.setTicketsToZero(teamMember));
     }
 }
