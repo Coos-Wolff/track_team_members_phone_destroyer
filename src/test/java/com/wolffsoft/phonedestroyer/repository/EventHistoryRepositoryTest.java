@@ -25,7 +25,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
     }
 
     @Test
-    public void storeEventHistoryByEventName() {
+    public void storeEventHistory() {
         Member member = Member.builder()
                 .id(TEAM_MEMBER_ID)
                 .name(MEMBER_NAME)
