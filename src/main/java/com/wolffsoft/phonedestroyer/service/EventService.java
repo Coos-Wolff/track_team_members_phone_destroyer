@@ -52,13 +52,11 @@ public class EventService {
     }
 
     public void createNewEventAddMembersSetTicketsToZero(String eventName) {
-        CreateEvent createEvent = CreateEvent.builder()
-                .name(eventName)
-                .build();
+        CreateEvent createEvent = CreateEvent.create(eventName);
+        List<Member> members = memberRepository.getAllMembers();
 
         eventRepository.createNewEvent(createEvent);
 
-        List<Member> members = memberRepository.getAllMembers();
         members.forEach(teamMember -> memberRepository.setTicketsToZero(teamMember));
         Optional<Event> event = eventRepository.getEventByName(eventName);
 
