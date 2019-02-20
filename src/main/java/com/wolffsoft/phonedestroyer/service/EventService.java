@@ -52,8 +52,8 @@ public class EventService {
         members.forEach(teamMember -> eventHistoryRepository.storeEventHistory(teamMember, event));
     }
 
-    public void createNewEvent(String eventName) {
-        CreateEvent createEvent = CreateEvent.create(eventName);
+    public void createNewEvent(String eventName, String eventType) {
+        CreateEvent createEvent = CreateEvent.create(eventName, eventType);
         List<Member> members = memberRepository.getAllMembers();
 
         eventRepository.createNewEvent(createEvent);

@@ -23,8 +23,8 @@ public class EventRepository {
 
     public void createNewEvent(CreateEvent createEvent) {
         dslContext
-                .insertInto(EVENT, EVENT.NAME, EVENT.EVENT_DATE)
-                .values(createEvent.getName(), createEvent.getEventDate())
+                .insertInto(EVENT, EVENT.NAME, EVENT.EVENT_DATE, EVENT.EVENT_TYPE)
+                .values(createEvent.getName(), createEvent.getEventDate(), createEvent.getEventType())
                 .execute();
     }
 

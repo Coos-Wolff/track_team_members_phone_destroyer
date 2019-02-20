@@ -37,7 +37,7 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
 
     @Test
     public void testCreateNewEvent() {
-        CreateEvent createEvent = CreateEvent.create("New Created Event");
+        CreateEvent createEvent = CreateEvent.create("New Created Event", "Points");
 
         repository.createNewEvent(createEvent);
 
@@ -48,7 +48,7 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
 
     @Test
     public void testEndEvent() {
-        CreateEvent createEvent = CreateEvent.create("End Event");
+        CreateEvent createEvent = CreateEvent.create("End Event", "Tickets");
 
         repository.createNewEvent(createEvent);
 

@@ -15,6 +15,7 @@ public class OptionalEventMapper implements RecordMapper<Record, Optional<Event>
         return Optional.of(Event.builder()
                 .id(record.get(EVENT.ID))
                 .name(record.get(EVENT.NAME))
+                .eventType(record.get(EVENT.EVENT_TYPE))
                 .eventDate(record.get(EVENT.EVENT_DATE))
                 .eventHasEnded(record.get(EVENT.HAS_ENDED))
                 .build());
