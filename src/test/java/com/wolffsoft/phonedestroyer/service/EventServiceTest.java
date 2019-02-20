@@ -90,8 +90,6 @@ public class EventServiceTest {
         eventService.storeEventHistory(event);
         List<EventHistory> returnedEventHistory = eventHistoryRepository.getAllEventHistories();
 
-        returnedEventHistory.forEach(eventHistory ->
-                assertThat(eventHistory.getEventId()).isEqualTo(event.getId()));
         assertThat(returnedEventHistory.get(0).getMemberId()).isEqualTo(testMember1.getId());
         assertThat(returnedEventHistory.get(1).getMemberId()).isEqualTo(testMember2.getId());
         assertThat(returnedEventHistory.get(2).getMemberId()).isEqualTo(testMember3.getId());
