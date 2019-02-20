@@ -99,7 +99,7 @@ public class EventServiceTest {
     }
 
     @Test
-    public void testCreateNewEventAddTeamMembersSetTicketsToZero() {
+    public void testCreateNewEvent() {
         ArgumentCaptor<Event> eventArgumentCaptor = ArgumentCaptor.forClass(Event.class);
         ArgumentCaptor<Member> memberArgumentCaptor = ArgumentCaptor.forClass(Member.class);
         Event event = Event.builder()
