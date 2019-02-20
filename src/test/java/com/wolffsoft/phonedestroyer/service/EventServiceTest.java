@@ -102,7 +102,16 @@ public class EventServiceTest {
         String eventName = "New created Test Event";
 
         when(memberRepository.getAllMembers()).thenReturn(testMembers);
+    @Test
+    public void testGetEventByName() {
+        Event event = Event.builder()
+                .id(1)
+                .name(EVENT_NAME)
+                .build();
+        when(eventRepository.getEventByName(EVENT_NAME)).thenReturn(Optional.of(event));
 
-        eventService.createNewEventAddMembersSetTicketsToZero(eventName);
+        Event returnedEvent = eventService.getEventByName(EVENT_NAME).get();
+
+        assertThat(returnedEvent).isEqualTo(event);
     }
 }
