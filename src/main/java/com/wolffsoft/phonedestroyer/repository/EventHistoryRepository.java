@@ -8,7 +8,6 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.wolffsoft.phonedestroyer.persistance.repositories.jooq.Tables.EVENT_HISTORY;
 
@@ -41,13 +40,12 @@ public class EventHistoryRepository {
                 .execute();
     }
 
-    public Optional<EventHistory> getEventHistoryByTeamMemberAndEvent(Member member, Event event) {
+    public List<EventHistory> getEventHistoryByEventName(String eventName) {
         return dslContext
                 .select()
                 .from(EVENT_HISTORY)
-                .where(EVENT_HISTORY.MEMBER_ID.eq(member.getId()))
-                .and(EVENT_HISTORY.EVENT_ID.eq(event.getId()))
-                .fetchOptional(eventHistoryMapper);
+                .where(EVENT_HISTORY.EVENT_NAME.eq(eventName))
+                .fetch(eventHistoryMapper);
     }
 
     public List<EventHistory> getAllEventHistories() {

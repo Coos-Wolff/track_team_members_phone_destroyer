@@ -57,9 +57,10 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
 
         repository.storeEventHistory(member, event);
 
-        Optional<EventHistory> returnedEventHistory = repository.getEventHistoryByTeamMemberAndEvent(member, event);
+        List<EventHistory> returnedEventHistories = repository.getEventHistoryByEventName(EVENT_NAME);
 
-        assertThat(returnedEventHistory).isEqualTo(Optional.of(eventHistory));
+        assertThat(returnedEventHistories.size()).isEqualTo(1);
+        assertThat(returnedEventHistories.get(0).getMemberName()).isEqualTo(MEMBER_NAME);
     }
 
     @Test
