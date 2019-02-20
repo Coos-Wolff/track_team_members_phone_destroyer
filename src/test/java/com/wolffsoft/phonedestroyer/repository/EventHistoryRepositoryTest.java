@@ -61,7 +61,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
         assertThat(eventHistories.get(1).getMemberId()).isEqualTo(1);
         assertThat(eventHistories.get(1).getEventId()).isEqualTo(2);
         assertThat(eventHistories.get(1).getEventTicketsCollected()).isEqualTo(1543);
-        assertThat(eventHistories.get(1).getEventName()).isEqualTo("Test Event 2");
+        assertThat(eventHistories.get(1).getEventName()).isEqualTo("Test Event 1");
 
         assertThat(eventHistories.get(2).getId()).isEqualTo(3);
         assertThat(eventHistories.get(2).getMemberId()).isEqualTo(2);
@@ -75,7 +75,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
         String eventName = "Test Event 1";
         List<EventHistory> eventHistories = repository.getEventHistoryByEventName(eventName);
 
-        assertThat(eventHistories.size()).isEqualTo(2);
+        assertThat(eventHistories.size()).isEqualTo(3);
         assertThat(eventHistories.get(0).getMemberName()).isEqualTo("Member 1");
     }
 
