@@ -26,4 +26,8 @@ public class MemberService {
     public void setTicketsCollected(Member member) {
         memberRepository.setTicketsCollected(member);
     }
+
+    public void deleteMemberByName(String memberName) {
+        memberRepository.deleteMemberByName(memberName);
+    }
 }
