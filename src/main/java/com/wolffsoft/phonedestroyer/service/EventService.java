@@ -51,7 +51,7 @@ public class EventService {
         members.forEach(teamMember -> eventHistoryRepository.storeEventHistoryByTeamMember(teamMember, event));
     }
 
-    public void createNewEventAddMembersSetTicketsToZero(String eventName) {
+    public void createNewEvent(String eventName) {
         CreateEvent createEvent = CreateEvent.create(eventName);
         List<Member> members = memberRepository.getAllMembers();
 
