@@ -17,4 +17,6 @@ public class Event {
     @Builder.Default
     private String eventDate = formatInstantToString(instantNow());
     private List<Member> members;
+    @Builder.Default
+    private boolean eventHasEnded = false;
 }
