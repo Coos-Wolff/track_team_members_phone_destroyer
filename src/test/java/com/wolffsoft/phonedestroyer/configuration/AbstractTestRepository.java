@@ -41,7 +41,7 @@ public abstract class AbstractTestRepository<RepositoryType> {
         runDbScript("/db/table/create_tables.sql");
         runDbScript("/db/data/event_data.sql");
         runDbScript("/db/data/member_data.sql");
-        runDbScript("/db/data/event_team_member_data.sql");
+        runDbScript("/db/data/event_member_data.sql");
         runDbScript("/db/data/event_history_data.sql");
 
         repository = createRepository(dslContext);
