@@ -22,6 +22,7 @@ public class MemberServiceTest {
     private static final String EVENT_NAME = "Test Event 1";
 
     private List<Member> members;
+    private Member member1;
 
     @Mock
     private MemberRepository memberRepository;
@@ -32,6 +33,7 @@ public class MemberServiceTest {
     public void setup() {
         memberService = new MemberService(memberRepository);
         members = getTestTeamMembers();
+        member1 = testMember1;
     }
 
     @Test
