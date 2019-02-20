@@ -5,7 +5,6 @@ import com.wolffsoft.phonedestroyer.model.Event;
 import com.wolffsoft.phonedestroyer.model.EventHistory;
 import com.wolffsoft.phonedestroyer.model.Member;
 import org.jooq.DSLContext;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -23,18 +22,6 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
     @Override
     protected EventHistoryRepository createRepository(DSLContext dslContext) {
         return new EventHistoryRepository(dslContext);
-    }
-
-    @Before
-    public void setup() {
-        eventHistory = EventHistory.builder()
-                .id(4)
-                .memberId(TEAM_MEMBER_ID)
-                .eventId(EVENT_ID)
-                .eventName(EVENT_NAME)
-                .memberName(MEMBER_NAME)
-                .eventTicketsCollected(160)
-                .build();
     }
 
     @Test
