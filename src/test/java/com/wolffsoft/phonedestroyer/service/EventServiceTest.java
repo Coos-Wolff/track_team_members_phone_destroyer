@@ -99,9 +99,30 @@ public class EventServiceTest {
     //  Also make sure that all team members are added to the new event.
     @Test
     public void testCreateNewEventAddTeamMembersSetTicketsToZero() {
-        String eventName = "New created Test Event";
+        ArgumentCaptor<Event> eventArgumentCaptor = ArgumentCaptor.forClass(Event.class);
+        ArgumentCaptor<Member> memberArgumentCaptor = ArgumentCaptor.forClass(Member.class);
+        Event event = Event.builder()
+                .id(666)
+                .members(testMembers)
+                .build();
 
         when(memberRepository.getAllMembers()).thenReturn(testMembers);
+        when(eventRepository.getEventByName(EVENT_NAME)).thenReturn(Optional.of(event));
+
+        eventService.createNewEvent(EVENT_NAME);
+
+        verify(eventMemberRepository, times(3))
+                .storeEventIdAndMemberId(eventArgumentCaptor.capture(), memberArgumentCaptor.capture());
+
+        Event returnedEvent = eventService.getEventByName(EVENT_NAME).get();
+        Event capturedEvent = eventArgumentCaptor.getValue();
+        List<Member> capturedMember = memberArgumentCaptor.getAllValues();
+
+        assertThat(capturedEvent).isEqualTo(event);
+        assertThat(capturedMember).isEqualTo(testMembers);
+        assertThat(returnedEvent).isEqualTo(event);
+    }
+
     @Test
     public void testGetEventByName() {
         Event event = Event.builder()
