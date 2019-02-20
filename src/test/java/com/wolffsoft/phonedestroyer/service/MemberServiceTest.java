@@ -5,16 +5,16 @@ import com.wolffsoft.phonedestroyer.repository.MemberRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.getTestTeamMembers;
+import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.testMember1;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MemberServiceTest {
@@ -59,35 +59,27 @@ public class MemberServiceTest {
     }
 
     @Test
-    public void testUpdateTickets() {
-        when(memberRepository.getMembersByEventName(EVENT_NAME)).thenReturn(members);
+    public void testSetTicketsCollected() {
+        ArgumentCaptor<Member> argumentCaptor = ArgumentCaptor.forClass(Member.class);
 
-        Member member1;
-        Member member2;
-        Member member3;
+        members.forEach(member -> memberService.setTicketsCollected(member));
 
-        member1 = Member.builder()
-                .id(members.get(0).getId())
-                .ticketsCollectedCurrentEvent(1)
-                .build();
-        member2 = Member.builder()
-                .id(members.get(1).getId())
-                .ticketsCollectedCurrentEvent(2)
-                .build();
-        member3 = Member.builder()
-                .id(members.get(0).getId())
-                .ticketsCollectedCurrentEvent(3)
-                .build();
+        verify(memberRepository, times(3)).setTicketsCollected(argumentCaptor.capture());
 
-        List<Member> updatedMembers = Stream.of(member1, member2, member3).collect(Collectors.toList());
+        List<Member> capturedMembers = argumentCaptor.getAllValues();
 
-        when(memberRepository.getMembersByEventName(EVENT_NAME)).thenReturn(updatedMembers);
+        assertThat(capturedMembers).isEqualTo(members);
+    }
 
-        updatedMembers.forEach(member -> memberService.setTicketsCollected(member));
-        List<Member> returnedMembers = memberService.getMembersByEvent(EVENT_NAME);
+    @Test
+    public void testDeleteMember() {
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+        memberService.deleteMemberByName(member1.getName());
 
-        assertThat(returnedMembers.get(0).getTicketsCollectedCurrentEvent()).isEqualTo(1);
-        assertThat(returnedMembers.get(1).getTicketsCollectedCurrentEvent()).isEqualTo(2);
-        assertThat(returnedMembers.get(2).getTicketsCollectedCurrentEvent()).isEqualTo(3);
+        verify(memberRepository).deleteMemberByName(argumentCaptor.capture());
+
+        String capturedMemberName = argumentCaptor.getValue();
+
+        assertThat(capturedMemberName).isEqualTo(member1.getName());
     }
 }
