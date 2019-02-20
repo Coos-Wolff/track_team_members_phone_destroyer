@@ -62,5 +62,7 @@ public class EventService {
 
         event.ifPresent(createdEvent -> members.forEach(teamMember -> eventMemberRepository
                         .storeEventIdAndTeamMemberId(createdEvent, teamMember)));
+    public Optional<Event> getEventByName(String eventName) {
+        return eventRepository.getEventByName(eventName);
     }
 }
