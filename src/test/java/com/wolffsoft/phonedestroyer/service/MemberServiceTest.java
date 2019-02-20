@@ -53,7 +53,7 @@ public class MemberServiceTest {
     public void testGetMembersByEvent() {
         when(memberRepository.getMembersByEventName(EVENT_NAME)).thenReturn(members);
 
-        List<Member> returnedMembers = memberService.getMembersByEvent(EVENT_NAME);
+        List<Member> returnedMembers = memberService.getMembersByEventName(EVENT_NAME);
 
         assertThat(returnedMembers).isEqualTo(members);
     }

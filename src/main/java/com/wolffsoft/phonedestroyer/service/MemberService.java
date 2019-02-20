@@ -19,7 +19,7 @@ public class MemberService {
         memberRepository.addMember(member);
     }
 
-    public List<Member> getMembersByEvent(String eventName) {
+    public List<Member> getMembersByEventName(String eventName) {
         return memberRepository.getMembersByEventName(eventName);
     }
 
