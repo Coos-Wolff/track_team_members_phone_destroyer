@@ -5,6 +5,7 @@ CREATE TABLE event
   team_member_id INT(30)      NULL,
   event_date     VARCHAR(30)  NOT NULL,
   name           VARCHAR(255) NOT NULL,
+  has_ended      BOOLEAN      NOT NULL DEFAULT FALSE,
   PRIMARY KEY (id)
 );
 
