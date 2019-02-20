@@ -85,4 +85,13 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
         assertThat(eventHistories.get(2).getEventTicketsCollected()).isEqualTo(443);
         assertThat(eventHistories.get(2).getEventName()).isEqualTo("Test Event 1");
     }
+
+    @Test
+    public void testGetEventHistoryByEventName() {
+        String eventName = "Test Event 1";
+        List<EventHistory> eventHistories = repository.getEventHistoryByEventName(eventName);
+
+        assertThat(eventHistories.size()).isEqualTo(2);
+        assertThat(eventHistories.get(0).getMemberName()).isEqualTo("Member 1");
+    }
 }
