@@ -35,6 +35,19 @@ public class MemberServiceTest {
     }
 
     @Test
+    public void testAddMember() {
+        ArgumentCaptor<Member> argumentCaptor = ArgumentCaptor.forClass(Member.class);
+
+        memberService.addMember(member1);
+
+        verify(memberRepository, times(1)).addMember(argumentCaptor.capture());
+
+        Member capturedMember = argumentCaptor.getValue();
+
+        assertThat(capturedMember).isEqualTo(member1);
+    }
+
+    @Test
     public void testGetMembersByEvent() {
         when(memberRepository.getMembersByEventName(EVENT_NAME)).thenReturn(members);
 
