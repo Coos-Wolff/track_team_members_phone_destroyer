@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TeamMemberTestObject {
+public class MemberTestObject {
 
     public static Member testMember1 = getTestMember1();
     public static Member testMember2 = getTestMember2();
