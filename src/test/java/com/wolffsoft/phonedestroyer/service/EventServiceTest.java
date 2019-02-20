@@ -24,6 +24,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class EventServiceTest {
 
+    private static final String EVENT_NAME = "New created Test Event";
+
     @Mock
     private EventRepository eventRepository;
 
