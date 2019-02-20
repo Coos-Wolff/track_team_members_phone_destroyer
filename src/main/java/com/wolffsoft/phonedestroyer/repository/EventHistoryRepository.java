@@ -55,4 +55,14 @@ public class EventHistoryRepository {
                 .orderBy(EVENT_HISTORY.ID)
                 .fetch(eventHistoryMapper);
     }
+
+    public List<EventHistory> getEventHistoryOfLastTwoEvents(String eventName1, String eventName2) {
+        return dslContext
+                .select()
+                .from(EVENT_HISTORY)
+                .where(EVENT_HISTORY.EVENT_NAME.eq(eventName1))
+                .or(EVENT_HISTORY.EVENT_NAME.eq(eventName2))
+                .orderBy(EVENT_HISTORY.ID.desc())
+                .fetch(eventHistoryMapper);
+    }
 }
