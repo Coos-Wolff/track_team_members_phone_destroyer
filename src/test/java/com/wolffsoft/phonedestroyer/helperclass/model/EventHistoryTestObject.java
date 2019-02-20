@@ -24,7 +24,7 @@ public class EventHistoryTestObject {
     private static EventHistory getTestEventHistory1() {
         Event event = Event.builder()
                 .id(1)
-                .name("Test Event")
+                .name("Test Event 1")
                 .members(testMembers)
                 .build();
 
@@ -39,7 +39,7 @@ public class EventHistoryTestObject {
     private static EventHistory getTestEventHistory2() {
         Event event = Event.builder()
                 .id(1)
-                .name("Test Event")
+                .name("Test Event 2")
                 .members(testMembers)
                 .build();
 
@@ -54,7 +54,7 @@ public class EventHistoryTestObject {
     private static EventHistory getTestEventHistory3() {
         Event event = Event.builder()
                 .id(1)
-                .name("Test Event")
+                .name("Test Event 3")
                 .members(testMembers)
                 .build();
 
