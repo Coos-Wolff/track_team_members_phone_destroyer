@@ -5,21 +5,23 @@ import com.wolffsoft.phonedestroyer.model.EventHistory;
 import com.wolffsoft.phonedestroyer.model.EventTicket;
 import com.wolffsoft.phonedestroyer.model.Member;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
-import com.wolffsoft.phonedestroyer.repository.EventRepository;
 import com.wolffsoft.phonedestroyer.repository.EventMemberRepository;
+import com.wolffsoft.phonedestroyer.repository.EventRepository;
 import com.wolffsoft.phonedestroyer.repository.MemberRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.wolffsoft.phonedestroyer.helperclass.model.EventHistoryTestObject.getTestEventHistories;
-import static com.wolffsoft.phonedestroyer.helperclass.model.TeamMemberTestObject.*;
+import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventServiceTest {

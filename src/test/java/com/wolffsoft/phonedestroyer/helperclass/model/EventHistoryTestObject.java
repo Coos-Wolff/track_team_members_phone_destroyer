@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.TeamMemberTestObject.*;
+import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;
 
 public class EventHistoryTestObject {
 
