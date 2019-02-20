@@ -24,7 +24,8 @@ import static org.mockito.Mockito.*;
 public class EventServiceTest {
 
     private static final String EVENT_NAME = "New created Test Event";
-    private static final String EVENT_TYPE = "Tickets";
+    private static final String EVENT_TYPE_TICKETS = "Tickets";
+    private static final String EVENT_TYPE_POINTS = "Points";
 
     @Mock
     private EventRepository eventRepository;
@@ -103,14 +104,14 @@ public class EventServiceTest {
         Event event = Event.builder()
                 .id(666)
                 .name(EVENT_NAME)
-                .eventType(EVENT_TYPE)
+                .eventType(EVENT_TYPE_TICKETS)
                 .members(testMembers)
                 .build();
 
         when(memberRepository.getAllMembers()).thenReturn(testMembers);
         when(eventRepository.getEventByName(EVENT_NAME)).thenReturn(Optional.of(event));
 
-        eventService.createNewEvent(EVENT_NAME, EVENT_TYPE);
+        eventService.createNewEvent(EVENT_NAME, EVENT_TYPE_TICKETS);
 
         verify(eventMemberRepository, times(3))
                 .storeEventIdAndMemberId(eventArgumentCaptor.capture(), memberArgumentCaptor.capture());
