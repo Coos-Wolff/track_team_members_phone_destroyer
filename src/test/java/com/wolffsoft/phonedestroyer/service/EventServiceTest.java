@@ -98,9 +98,6 @@ public class EventServiceTest {
         assertThat(returnedEventHistory.get(2).getMemberId()).isEqualTo(testMember3.getId());
     }
 
-    // TODO Complete this test.
-    //  Make sure EventId and TeamMemberId are added to the event_team_member table.
-    //  Also make sure that all team members are added to the new event.
     @Test
     public void testCreateNewEventAddTeamMembersSetTicketsToZero() {
         ArgumentCaptor<Event> eventArgumentCaptor = ArgumentCaptor.forClass(Event.class);
