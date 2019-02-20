@@ -71,6 +71,9 @@ public class EventService {
     public void endEvent(Event event) {
         eventRepository.endEvent(event);
         List<Member> members = memberRepository.getAllMembers();
-        members.forEach(teamMember -> memberRepository.setTicketsToZero(teamMember));
+        members.forEach(member -> {
+            memberRepository.setTicketsToZero(member);
+            eventHistoryRepository.storeEventHistory(member, event);
+        });
     }
 }
