@@ -25,4 +25,11 @@ public class CreateEventTest {
 
         assertThat(createEvent).isEqualTo(testCreateEvent);
     }
+
+    @Test
+    public void testCreateMethod() {
+        CreateEvent createEvent = CreateEvent.create(EVENT_NAME);
+
+        assertThat(createEvent).isEqualTo(testCreateEvent);
+    }
 }
