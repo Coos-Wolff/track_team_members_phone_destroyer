@@ -137,6 +137,7 @@ public class EventServiceTest {
     @Test
     public void testEndEvent() {
         Event event = Event.builder()
+                .id(123456789)
                 .name(EVENT_NAME)
                 .members(testMembers)
                 .eventHasEnded(false)
