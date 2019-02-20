@@ -37,15 +37,30 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
 
     @Test
     public void testCreateNewEvent() {
-        CreateEvent createEvent = CreateEvent.builder()
-                .name("New Created Event")
-                .build();
+        CreateEvent createEvent = CreateEvent.create("New Created Event");
 
         repository.createNewEvent(createEvent);
 
         Optional<Event> createdEvent = repository.getEventByName(createEvent.getName());
 
         assertThat(createdEvent.get().getName()).isEqualTo(createEvent.getName());
-        assertThat(createdEvent.get().getName()).isEqualTo(createEvent.getName());
+    }
+
+    @Test
+    public void testEndEvent() {
+        CreateEvent createEvent = CreateEvent.create("End Event");
+
+        repository.createNewEvent(createEvent);
+
+        Optional<Event> eventCreated = repository.getEventByName(createEvent.getName());
+
+        assertThat(eventCreated.get().getName()).isEqualTo(createEvent.getName());
+        assertThat(eventCreated.get().isEventHasEnded()).isEqualTo(false);
+
+        repository.endEvent(eventCreated.get());
+
+        Optional<Event> endedEvent = repository.getEventByName(eventCreated.get().getName());
+
+        assertThat(endedEvent.get().isEventHasEnded()).isEqualTo(true);
     }
 }
