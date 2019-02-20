@@ -20,8 +20,6 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
     private static final int TEAM_MEMBER_ID = 123456789;
     private static final int EVENT_ID = 123456789;
 
-    private EventHistory eventHistory;
-
     @Override
     protected EventHistoryRepository createRepository(DSLContext dslContext) {
         return new EventHistoryRepository(dslContext);
