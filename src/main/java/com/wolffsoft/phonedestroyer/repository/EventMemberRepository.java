@@ -16,7 +16,7 @@ public class EventMemberRepository {
         this.dslContext = dslContext;
     }
 
-    public void storeEventIdAndTeamMemberId(Event event, Member member) {
+    public void storeEventIdAndMemberId(Event event, Member member) {
         dslContext
                 .insertInto(EVENT_MEMBER, EVENT_MEMBER.EVENT_ID, EVENT_MEMBER.MEMBER_ID)
                 .values(event.getId(), member.getId())
