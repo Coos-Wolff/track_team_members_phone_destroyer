@@ -36,12 +36,13 @@ public class EventService {
         List<EventTicket> eventTickets = new ArrayList<>();
         List<Member> members = memberRepository.getMembersByEventName(eventName);
 
-        members.forEach(teamMember -> { EventTicket eventTicket = EventTicket.builder()
-                            .memberName(teamMember.getName())
-                            .amountEventTickets(teamMember.getTicketsCollectedCurrentEvent())
-                            .build();
-                    eventTickets.add(eventTicket);
-                });
+        members.forEach(teamMember -> {
+            EventTicket eventTicket = EventTicket.builder()
+                    .memberName(teamMember.getName())
+                    .amountEventTickets(teamMember.getTicketsCollectedCurrentEvent())
+                    .build();
+            eventTickets.add(eventTicket);
+        });
 
         return eventTickets;
     }
