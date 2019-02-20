@@ -1,4 +1,4 @@
-INSERT INTO event_history(id, event_name, member_id, event_id, event_tickets_collected)
-VALUES (1, 'Test Event 1', 1, 1, 150),
-       (2, 'Test Event 2', 1, 2, 1543),
-       (3, 'Test Event 1', 2, 1, 443);
+INSERT INTO event_history(id, event_name, member_name, member_id, event_id, event_tickets_collected)
+VALUES (1, 'Test Event 1', 'Member 1', 1, 1, 150),
+       (2, 'Test Event 2', 'Member 1',  1, 2, 1543),
+       (3, 'Test Event 1', 'Member 2', 2, 1, 443);

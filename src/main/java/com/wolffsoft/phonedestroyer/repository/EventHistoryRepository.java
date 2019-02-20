@@ -29,11 +29,13 @@ public class EventHistoryRepository {
                         EVENT_HISTORY.EVENT_ID,
                         EVENT_HISTORY.MEMBER_ID,
                         EVENT_HISTORY.EVENT_NAME,
+                        EVENT_HISTORY.MEMBER_NAME,
                         EVENT_HISTORY.EVENT_TICKETS_COLLECTED
                 )
                 .values(event.getId(),
                         member.getId(),
                         event.getName(),
+                        member.getName(),
                         member.getTicketsCollectedCurrentEvent()
                 )
                 .execute();

@@ -36,8 +36,9 @@ CREATE TABLE event_history
   member_id               INT(30)      NOT NULL,
   event_id                INT(20)      NOT NULL,
   event_tickets_collected INT(6),
-  FOREIGN KEY (member_id) REFERENCES member (id),
   event_name              VARCHAR(255) NOT NULL,
+  member_name             VARCHAR(255) NOT NULL,
+  FOREIGN KEY (member_id) REFERENCES member (id),
   FOREIGN KEY (event_id) REFERENCES event (id),
   PRIMARY KEY (id)
 );

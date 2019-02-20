@@ -8,6 +8,7 @@ import lombok.Value;
 public class EventHistory {
 
     private String eventName;
+    private String memberName;
     private int id;
     private int memberId;
     private int eventId;

@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHistoryRepository> {
 
     private static final String EVENT_NAME = "Test Event 123456789";
+    private static final String MEMBER_NAME = "Member 123456789";
     private static final int TEAM_MEMBER_ID = 123456789;
     private static final int EVENT_ID = 123456789;
 
@@ -34,6 +35,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
                 .memberId(TEAM_MEMBER_ID)
                 .eventId(EVENT_ID)
                 .eventName(EVENT_NAME)
+                .memberName(MEMBER_NAME)
                 .eventTicketsCollected(160)
                 .build();
     }
@@ -42,7 +44,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
     public void storeEventHistoryByTeamMemberAndEvent() {
         Member member = Member.builder()
                 .id(TEAM_MEMBER_ID)
-                .name("Team Member 123456789")
+                .name(MEMBER_NAME)
                 .ticketsCollectedCurrentEvent(160)
                 .build();
 

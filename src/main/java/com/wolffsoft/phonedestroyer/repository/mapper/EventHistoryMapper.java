@@ -13,8 +13,9 @@ public class EventHistoryMapper implements RecordMapper<Record, EventHistory> {
         return EventHistory.builder()
                 .id(record.get(EVENT_HISTORY.ID))
                 .eventId(record.get(EVENT_HISTORY.EVENT_ID))
-                .eventName(record.get(EVENT_HISTORY.EVENT_NAME))
                 .memberId(record.get(EVENT_HISTORY.MEMBER_ID))
+                .eventName(record.get(EVENT_HISTORY.EVENT_NAME))
+                .memberName(record.get(EVENT_HISTORY.MEMBER_NAME))
                 .eventTicketsCollected(record.get(EVENT_HISTORY.EVENT_TICKETS_COLLECTED))
                 .build();
     }
