@@ -34,6 +34,7 @@ public class EventHistoryTestObject {
         return EventHistory.builder()
                 .eventId(event.getId())
                 .eventName(event.getName())
+                .memberName(testMember1.getName())
                 .memberId(testMember1.getId())
                 .eventTicketsCollected(testMember1.getTicketsCollectedCurrentEvent())
                 .build();
@@ -50,6 +51,7 @@ public class EventHistoryTestObject {
                 .eventId(event.getId())
                 .eventName(event.getName())
                 .memberId(testMember2.getId())
+                .memberName(testMember2.getName())
                 .eventTicketsCollected(testMember2.getTicketsCollectedCurrentEvent())
                 .build();
     }
@@ -65,9 +67,11 @@ public class EventHistoryTestObject {
                 .eventId(event.getId())
                 .eventName(event.getName())
                 .memberId(testMember3.getId())
+                .memberName(testMember3.getName())
                 .eventTicketsCollected(testMember3.getTicketsCollectedCurrentEvent())
                 .build();
     }
+
     private static EventHistory getTestEventHistory4() {
         Event event = Event.builder()
                 .id(2)
