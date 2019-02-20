@@ -43,4 +43,12 @@ public class EventRepository {
                 .where(EVENT.NAME.eq(name))
                 .fetchOne(optionalEventMapper);
     }
+
+    public void endEvent(Event event) {
+        dslContext
+                .update(EVENT)
+                .set(EVENT.HAS_ENDED, true)
+                .where(EVENT.NAME.eq(event.getName()))
+                .execute();
+    }
 }
