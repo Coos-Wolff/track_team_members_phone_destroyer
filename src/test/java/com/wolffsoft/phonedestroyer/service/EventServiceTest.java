@@ -136,4 +136,29 @@ public class EventServiceTest {
 
         assertThat(returnedEvent).isEqualTo(event);
     }
+
+    @Test
+    public void testEndEvent() {
+        Event event = Event.builder()
+                .name(EVENT_NAME)
+                .members(testMembers)
+                .eventHasEnded(false)
+                .build();
+
+        when(memberRepository.getAllMembers()).thenReturn(testMembers);
+
+        ArgumentCaptor<Member> memberArgumentCaptor = ArgumentCaptor.forClass(Member.class);
+        ArgumentCaptor<Event> eventArgumentCaptor = ArgumentCaptor.forClass(Event.class);
+
+        eventService.endEvent(event);
+
+        verify(eventRepository, times(1)).endEvent(eventArgumentCaptor.capture());
+        verify(memberRepository, times(3)).setTicketsToZero(memberArgumentCaptor.capture());
+
+        List<Member> capturedMembers = memberArgumentCaptor.getAllValues();
+        Event capturedEvent = eventArgumentCaptor.getValue();
+
+        assertThat(capturedMembers).isEqualTo(testMembers);
+        assertThat(capturedEvent).isEqualTo(event);
+    }
 }
