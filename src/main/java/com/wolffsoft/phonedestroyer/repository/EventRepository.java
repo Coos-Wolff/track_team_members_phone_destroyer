@@ -60,6 +60,7 @@ public class EventRepository {
         return dslContext
                 .select()
                 .from(EVENT)
+                .where(EVENT.HAS_ENDED.eq(true))
                 .orderBy(EVENT.ID.desc())
                 .limit(2)
                 .fetch(eventMapper);
