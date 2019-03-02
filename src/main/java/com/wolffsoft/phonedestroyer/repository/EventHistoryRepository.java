@@ -48,7 +48,7 @@ public class EventHistoryRepository {
                 .fetch(eventHistoryMapper);
     }
 
-    public List<EventHistory> getAllEventHistories() {
+    public List<EventHistory> getEventHistories() {
         return dslContext
                 .select()
                 .from(EVENT_HISTORY)
