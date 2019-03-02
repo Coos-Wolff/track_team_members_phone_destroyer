@@ -166,38 +166,4 @@ public class EventServiceTest {
         assertThat(capturedMembers).containsSequence(testMembers);
         assertThat(capturedEvent).isEqualTo(event);
     }
-
-    @Test
-    public void testCalculateMembersToBeKicked() {
-        Event event1 = Event.builder()
-                .id(1)
-                .name("Test Event 1")
-                .eventHasEnded(true)
-                .eventType(EVENT_TYPE_TICKETS)
-                .members(testMembers)
-                .build();
-
-        Event event2 = Event.builder()
-                .id(1)
-                .name("Test Event 2")
-                .eventHasEnded(true)
-                .eventType(EVENT_TYPE_TICKETS)
-                .members(testMembers)
-                .build();
-
-        List<Event> lastTwoEvents = Stream.of(event1, event2).collect(Collectors.toList());
-        List<EventHistory> eventHistoryOfLastTwoEvents = testEventHistories;
-
-        when(eventRepository.getLastTwoEvents()).thenReturn(lastTwoEvents);
-        when(eventHistoryRepository.getEventHistoryOfLastTwoEvents(event1.getName(), event2.getName()))
-                .thenReturn(eventHistoryOfLastTwoEvents);
-        Member member1 = testMembers.get(0);
-        Member member2 = testMembers.get(1);
-        when(memberRepository.getMemberByName(member1.getName())).thenReturn(Optional.of(member1));
-        when(memberRepository.getMemberByName(member2.getName())).thenReturn(Optional.of(member2));
-
-        List<Member> membersToBeKicked = eventService.calculateMembersToBeKicked();
-
-        assertThat(membersToBeKicked.size()).isEqualTo(2);
-    }
 }
