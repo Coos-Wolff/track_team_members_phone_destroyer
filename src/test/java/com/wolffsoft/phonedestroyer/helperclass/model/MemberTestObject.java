@@ -20,6 +20,7 @@ public class MemberTestObject {
                 .id(123)
                 .name("Member Name 1")
                 .ticketsCollectedCurrentEvent(15)
+                .pointsCollectedCurrentEvent(0)
                 .build();
     }
 
@@ -28,6 +29,7 @@ public class MemberTestObject {
                 .id(234)
                 .name("Member Name 2")
                 .ticketsCollectedCurrentEvent(12)
+                .pointsCollectedCurrentEvent(0)
                 .build();
     }
 
@@ -36,6 +38,7 @@ public class MemberTestObject {
                 .id(345)
                 .name("Member Name 3")
                 .ticketsCollectedCurrentEvent(1456)
+                .pointsCollectedCurrentEvent(0)
                 .build();
     }
 
@@ -44,6 +47,7 @@ public class MemberTestObject {
                 .id(123)
                 .name("Member Name 1")
                 .ticketsCollectedCurrentEvent(1)
+                .pointsCollectedCurrentEvent(0)
                 .build();
     }
 
@@ -52,6 +56,7 @@ public class MemberTestObject {
                 .id(234)
                 .name("Member Name 2")
                 .ticketsCollectedCurrentEvent(2)
+                .pointsCollectedCurrentEvent(0)
                 .build();
     }
 

@@ -37,6 +37,7 @@ public class EventHistoryTestObject {
                 .memberName(testMember1.getName())
                 .memberId(testMember1.getId())
                 .eventTicketsCollected(testMember1.getTicketsCollectedCurrentEvent())
+                .pointsCollected(testMember1.getPointsCollectedCurrentEvent())
                 .build();
     }
 
@@ -53,6 +54,7 @@ public class EventHistoryTestObject {
                 .memberId(testMember2.getId())
                 .memberName(testMember2.getName())
                 .eventTicketsCollected(testMember2.getTicketsCollectedCurrentEvent())
+                .pointsCollected(testMember2.getPointsCollectedCurrentEvent())
                 .build();
     }
 
@@ -69,6 +71,7 @@ public class EventHistoryTestObject {
                 .memberId(testMember3.getId())
                 .memberName(testMember3.getName())
                 .eventTicketsCollected(testMember3.getTicketsCollectedCurrentEvent())
+                .pointsCollected(testMember2.getPointsCollectedCurrentEvent())
                 .build();
     }
 
@@ -85,6 +88,7 @@ public class EventHistoryTestObject {
                 .memberId(testMember4.getId())
                 .memberName(testMember4.getName())
                 .eventTicketsCollected(testMember4.getTicketsCollectedCurrentEvent())
+                .pointsCollected(testMember4.getPointsCollectedCurrentEvent())
                 .build();
     }
 
@@ -101,6 +105,7 @@ public class EventHistoryTestObject {
                 .memberId(testMember5.getId())
                 .memberName(testMember5.getName())
                 .eventTicketsCollected(testMember5.getTicketsCollectedCurrentEvent())
+                .pointsCollected(testMember5.getPointsCollectedCurrentEvent())
                 .build();
     }
 

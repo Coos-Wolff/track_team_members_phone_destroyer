@@ -17,6 +17,7 @@ CREATE TABLE member
   name                            VARCHAR(255),
   date_joined                     VARCHAR(30) NOT NULL,
   tickets_collected_current_event INT(6)      NOT NULL DEFAULT 0,
+  points_collected_current_event  INT(6),
   PRIMARY KEY (id)
 );
 
@@ -37,6 +38,7 @@ CREATE TABLE event_history
   member_id               INT(30)      NOT NULL,
   event_id                INT(20)      NOT NULL,
   event_tickets_collected INT(6),
+  event_points_collected  INT(6),
   event_name              VARCHAR(255) NOT NULL,
   member_name             VARCHAR(255) NOT NULL,
   FOREIGN KEY (member_id) REFERENCES member (id),

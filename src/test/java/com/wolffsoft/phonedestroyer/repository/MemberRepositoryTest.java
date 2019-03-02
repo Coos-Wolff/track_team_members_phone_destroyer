@@ -31,12 +31,14 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
                 .id(13)
                 .name("Team Member 13")
                 .joinedTeam("01-01-2019")
+                .pointsCollectedCurrentEvent(111)
                 .build();
 
         member14 = Member.builder()
                 .id(14)
                 .name("Team Member 14")
                 .joinedTeam("01-01-2019")
+                .pointsCollectedCurrentEvent(333)
                 .build();
     }
 

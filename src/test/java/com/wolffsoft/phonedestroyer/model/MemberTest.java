@@ -15,6 +15,7 @@ public class MemberTest {
     private static final String TEAM_MEMBER_NAME = "Team Member Name";
     private static final  String DATE_JOINED = formatInstantToString(INSTANT_NOW);
     private static final int TICKETS_COLLECTED = 12;
+    private static final int POINTS_COLLECTED = 19;
     private static final int ID = 1;
 
     private Member testMember;
@@ -25,6 +26,7 @@ public class MemberTest {
                 .id(ID)
                 .name(TEAM_MEMBER_NAME)
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
+                .pointsCollectedCurrentEvent(POINTS_COLLECTED)
                 .joinedTeam(DATE_JOINED)
                 .build();
     }
@@ -36,6 +38,7 @@ public class MemberTest {
                 .name(TEAM_MEMBER_NAME)
                 .joinedTeam(DATE_JOINED)
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
+                .pointsCollectedCurrentEvent(POINTS_COLLECTED)
                 .build();
 
         assertThat(member).isEqualTo(testMember);

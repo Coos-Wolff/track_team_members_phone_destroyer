@@ -12,6 +12,7 @@ public class EventHistoryTest {
     private static final int TEAM_MEMBER_ID = 1;
     private static final int EVENT_ID = 1;
     private static final int EVENT_TICKETS_COLLECTED = 550;
+    private static final int POINTS_COLLECTED = 19;
 
     private EventHistory testEventHistory;
 
@@ -23,6 +24,7 @@ public class EventHistoryTest {
                 .eventId(EVENT_ID)
                 .memberId(TEAM_MEMBER_ID)
                 .eventTicketsCollected(EVENT_TICKETS_COLLECTED)
+                .pointsCollected(POINTS_COLLECTED)
                 .build();
     }
 
@@ -34,6 +36,7 @@ public class EventHistoryTest {
                 .eventId(EVENT_ID)
                 .memberId(TEAM_MEMBER_ID)
                 .eventTicketsCollected(EVENT_TICKETS_COLLECTED)
+                .pointsCollected(POINTS_COLLECTED)
                 .build();
 
         assertThat(eventHistory).isEqualTo(testEventHistory);

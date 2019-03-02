@@ -26,8 +26,15 @@ public class MemberRepository {
 
     public int addMember(Member member) {
         return dslContext
-                .insertInto(MEMBER, MEMBER.NAME, MEMBER.DATE_JOINED)
-                .values(member.getName(), member.getJoinedTeam())
+                .insertInto(
+                        MEMBER, MEMBER.NAME, MEMBER.DATE_JOINED,
+                        MEMBER.TICKETS_COLLECTED_CURRENT_EVENT, MEMBER.POINTS_COLLECTED_CURRENT_EVENT
+                )
+                .values(member.getName(),
+                        member.getJoinedTeam(),
+                        member.getTicketsCollectedCurrentEvent(),
+                        member.getPointsCollectedCurrentEvent()
+                )
                 .execute();
     }
 
@@ -74,11 +81,13 @@ public class MemberRepository {
                 .fetch(memberMapper);
     }
 
-    public void setTicketsToZero(Member member) {
+    public void setTicketsAndPointsToZero(Member member) {
         dslContext
                 .update(MEMBER)
                 .set(MEMBER.TICKETS_COLLECTED_CURRENT_EVENT, 0)
-                .where(MEMBER.ID.eq(member.getId()));
+                .set(MEMBER.POINTS_COLLECTED_CURRENT_EVENT, 0)
+                .where(MEMBER.ID.eq(member.getId()))
+                .execute();
     }
 
     public void setTicketsCollected(Member member) {
