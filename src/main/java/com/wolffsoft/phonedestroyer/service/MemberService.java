@@ -30,4 +30,8 @@ public class MemberService {
     public void deleteMemberByName(String memberName) {
         memberRepository.deleteMemberByName(memberName);
     }
+
+    public void kickMember(List<String> members) {
+        members.forEach(member -> memberRepository.deleteMemberByName(member));
+    }
 }

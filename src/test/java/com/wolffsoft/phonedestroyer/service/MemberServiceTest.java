@@ -82,4 +82,20 @@ public class MemberServiceTest {
 
         assertThat(capturedMemberName).isEqualTo(member1.getName());
     }
+
+    @Test
+    public void testKickMember() {
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+        List<String> members = Stream.of(testMember1.getName(), testMember2.getName())
+                .collect(Collectors.toList());
+        memberService.kickMember(members);
+
+        verify(memberRepository, times(2)).deleteMemberByName(argumentCaptor.capture());
+
+        List<String> capturedNames = argumentCaptor.getAllValues();
+
+        assertThat(capturedNames.size()).isEqualTo(2);
+        assertThat(capturedNames.get(0)).isEqualTo(testMember1.getName());
+        assertThat(capturedNames.get(1)).isEqualTo(testMember2.getName());
+    }
 }
