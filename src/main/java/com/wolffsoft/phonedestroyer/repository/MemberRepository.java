@@ -97,4 +97,12 @@ public class MemberRepository {
                 .where(MEMBER.ID.eq(member.getId()))
                 .execute();
     }
+
+    public void setPointsCollected(Member member) {
+        dslContext
+                .update(MEMBER)
+                .set(MEMBER.POINTS_COLLECTED_CURRENT_EVENT, member.getPointsCollectedCurrentEvent())
+                .where(MEMBER.ID.eq(member.getId()))
+                .execute();
+    }
 }

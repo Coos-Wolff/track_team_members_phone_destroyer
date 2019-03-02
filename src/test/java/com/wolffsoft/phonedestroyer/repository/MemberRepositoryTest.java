@@ -177,4 +177,38 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
 
         assertThat(returnedMember.get().getTicketsCollectedCurrentEvent()).isEqualTo(150);
     }
+
+    @Test
+    public void testUpdatePointsCollected() {
+        String name = "Member 100";
+        Member member = repository.getMemberByName(name).get();
+
+        assertThat(member.getPointsCollectedCurrentEvent()).isEqualTo(61);
+
+        member = Member.builder()
+                .id(100)
+                .name(name)
+                .joinedTeam("01-02-2019")
+                .ticketsCollectedCurrentEvent(0)
+                .pointsCollectedCurrentEvent(123)
+                .build();
+
+        repository.setPointsCollected(member);
+
+        Optional<Member> returnedMember = repository.getMemberByName(member.getName());
+
+        assertThat(returnedMember.get().getPointsCollectedCurrentEvent()).isEqualTo(123);
+
+        member = Member.builder()
+                .id(100)
+                .name(name)
+                .pointsCollectedCurrentEvent(61)
+                .build();
+
+        repository.setPointsCollected(member);
+
+        returnedMember = repository.getMemberByName(member.getName());
+
+        assertThat(returnedMember.get().getPointsCollectedCurrentEvent()).isEqualTo(61);
+    }
 }
