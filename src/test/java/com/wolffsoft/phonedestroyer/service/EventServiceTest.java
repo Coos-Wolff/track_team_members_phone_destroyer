@@ -1,6 +1,9 @@
 package com.wolffsoft.phonedestroyer.service;
 
-import com.wolffsoft.phonedestroyer.model.*;
+import com.wolffsoft.phonedestroyer.model.Event;
+import com.wolffsoft.phonedestroyer.model.EventHistory;
+import com.wolffsoft.phonedestroyer.model.EventTicket;
+import com.wolffsoft.phonedestroyer.model.Member;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
 import com.wolffsoft.phonedestroyer.repository.EventMemberRepository;
 import com.wolffsoft.phonedestroyer.repository.EventRepository;
@@ -14,8 +17,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.wolffsoft.phonedestroyer.helperclass.model.EventHistoryTestObject.getTestEventHistories;
 import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;

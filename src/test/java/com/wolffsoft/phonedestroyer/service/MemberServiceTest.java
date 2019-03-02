@@ -10,9 +10,10 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.getTestTeamMembers;
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.testMember1;
+import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
