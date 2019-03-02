@@ -132,7 +132,7 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
     @Test
     public void testSetTicketsCollectedCurrentEventToZero() {
         repository.addMember(member13);
-        repository.setTicketsToZero(member13);
+        repository.setTicketsAndPointsToZero(member13);
 
         Optional<Member> returnedTeamMember13 = repository.getMemberByName(member13.getName());
 

@@ -87,10 +87,10 @@ public class EventServiceTest {
                 .members(testMembers)
                 .build();
 
-        when(eventHistoryRepository.getAllEventHistories()).thenReturn(testEventHistories);
+        when(eventHistoryRepository.getEventHistories()).thenReturn(testEventHistories);
 
         eventService.storeEventHistory(event);
-        List<EventHistory> returnedEventHistory = eventHistoryRepository.getAllEventHistories();
+        List<EventHistory> returnedEventHistory = eventHistoryRepository.getEventHistories();
 
         assertThat(returnedEventHistory.get(0).getMemberId()).isEqualTo(testMember1.getId());
         assertThat(returnedEventHistory.get(1).getMemberId()).isEqualTo(testMember2.getId());

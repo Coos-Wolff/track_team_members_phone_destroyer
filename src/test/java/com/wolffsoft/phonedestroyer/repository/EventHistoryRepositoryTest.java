@@ -49,7 +49,7 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
 
     @Test
     public void testGetAllEventHistory() {
-        List<EventHistory> eventHistories = repository.getAllEventHistories();
+        List<EventHistory> eventHistories = repository.getEventHistories();
 
         assertThat(eventHistories.get(0).getId()).isEqualTo(10);
         assertThat(eventHistories.get(0).getMemberId()).isEqualTo(2);
