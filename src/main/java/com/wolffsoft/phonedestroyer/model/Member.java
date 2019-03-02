@@ -15,4 +15,5 @@ public class Member {
     private String joinedTeam = formatInstantToString(instantNow());
     private String name;
     private int ticketsCollectedCurrentEvent;
+    private int pointsCollectedCurrentEvent;
 }

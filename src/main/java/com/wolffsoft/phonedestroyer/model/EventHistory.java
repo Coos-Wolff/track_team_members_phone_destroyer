@@ -13,4 +13,5 @@ public class EventHistory {
     private int memberId;
     private int eventId;
     private int eventTicketsCollected;
+    private int pointsCollected;
 }
