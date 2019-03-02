@@ -47,6 +47,10 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
         int addedTeamMember = repository.addMember(member13);
 
         assertThat(addedTeamMember).isEqualTo(1);
+
+        Optional<Member> addedMember = repository.getMemberByName(member13.getName());
+
+        assertThat(addedMember.get().getName()).isEqualTo(member13.getName());
     }
 
     @Test
