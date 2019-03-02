@@ -27,7 +27,6 @@ public class EventServiceTest {
 
     private static final String EVENT_NAME = "New created Test Event";
     private static final String EVENT_TYPE_TICKETS = "Tickets";
-    private static final String EVENT_TYPE_POINTS = "Points";
 
     @Mock
     private EventRepository eventRepository;
