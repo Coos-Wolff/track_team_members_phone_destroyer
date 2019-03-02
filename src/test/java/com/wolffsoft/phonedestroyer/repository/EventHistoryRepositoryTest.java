@@ -51,23 +51,23 @@ public class EventHistoryRepositoryTest extends AbstractTestRepository<EventHist
     public void testGetAllEventHistory() {
         List<EventHistory> eventHistories = repository.getAllEventHistories();
 
-        assertThat(eventHistories.get(0).getId()).isEqualTo(1);
-        assertThat(eventHistories.get(0).getMemberId()).isEqualTo(1);
+        assertThat(eventHistories.get(0).getId()).isEqualTo(10);
+        assertThat(eventHistories.get(0).getMemberId()).isEqualTo(2);
         assertThat(eventHistories.get(0).getEventId()).isEqualTo(1);
-        assertThat(eventHistories.get(0).getEventTicketsCollected()).isEqualTo(150);
-        assertThat(eventHistories.get(0).getEventName()).isEqualTo("Test Event 1");
+        assertThat(eventHistories.get(0).getEventTicketsCollected()).isEqualTo(925);
+        assertThat(eventHistories.get(0).getEventName()).isEqualTo("Test Event 4");
 
-        assertThat(eventHistories.get(1).getId()).isEqualTo(2);
-        assertThat(eventHistories.get(1).getMemberId()).isEqualTo(1);
-        assertThat(eventHistories.get(1).getEventId()).isEqualTo(2);
-        assertThat(eventHistories.get(1).getEventTicketsCollected()).isEqualTo(1543);
-        assertThat(eventHistories.get(1).getEventName()).isEqualTo("Test Event 1");
+        assertThat(eventHistories.get(1).getId()).isEqualTo(9);
+        assertThat(eventHistories.get(1).getMemberId()).isEqualTo(2);
+        assertThat(eventHistories.get(1).getEventId()).isEqualTo(1);
+        assertThat(eventHistories.get(1).getEventTicketsCollected()).isEqualTo(800);
+        assertThat(eventHistories.get(1).getEventName()).isEqualTo("Test Event 4");
 
-        assertThat(eventHistories.get(2).getId()).isEqualTo(3);
+        assertThat(eventHistories.get(2).getId()).isEqualTo(8);
         assertThat(eventHistories.get(2).getMemberId()).isEqualTo(2);
         assertThat(eventHistories.get(2).getEventId()).isEqualTo(1);
-        assertThat(eventHistories.get(2).getEventTicketsCollected()).isEqualTo(443);
-        assertThat(eventHistories.get(2).getEventName()).isEqualTo("Test Event 1");
+        assertThat(eventHistories.get(2).getEventTicketsCollected()).isEqualTo(1111);
+        assertThat(eventHistories.get(2).getEventName()).isEqualTo("Test Event 4");
     }
 
     @Test

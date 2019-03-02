@@ -113,7 +113,7 @@ public class EventServiceTest {
 
         eventService.createNewEvent(EVENT_NAME, EVENT_TYPE_TICKETS);
 
-        verify(eventMemberRepository, times(6))
+        verify(eventMemberRepository, times(12))
                 .storeEventIdAndMemberId(eventArgumentCaptor.capture(), memberArgumentCaptor.capture());
 
         Event returnedEvent = eventService.getEventByName(EVENT_NAME).get();
@@ -155,9 +155,9 @@ public class EventServiceTest {
         eventService.endEvent(event);
 
         verify(eventRepository, times(1)).endEvent(eventArgumentCaptor.capture());
-        verify(memberRepository, times(6)).setTicketsToZero(memberArgumentCaptor.capture());
+        verify(memberRepository, times(12)).setTicketsAndPointsToZero(memberArgumentCaptor.capture());
         testMembers.forEach(testMember ->
-                verify(eventHistoryRepository, times(6))
+                verify(eventHistoryRepository, times(12))
                         .storeEventHistory(memberArgumentCaptor.capture(), eventArgumentCaptor.capture()));
 
         List<Member> capturedMembers = memberArgumentCaptor.getAllValues();

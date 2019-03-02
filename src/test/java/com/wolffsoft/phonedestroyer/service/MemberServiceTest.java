@@ -64,7 +64,7 @@ public class MemberServiceTest {
 
         members.forEach(member -> memberService.setTicketsCollected(member));
 
-        verify(memberRepository, times(6)).setTicketsCollected(argumentCaptor.capture());
+        verify(memberRepository, times(12)).setTicketsCollected(argumentCaptor.capture());
 
         List<Member> capturedMembers = argumentCaptor.getAllValues();
 
