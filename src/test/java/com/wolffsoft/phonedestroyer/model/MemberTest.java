@@ -3,17 +3,14 @@ package com.wolffsoft.phonedestroyer.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.Instant;
-
 import static com.wolffsoft.phonedestroyer.model.InstantNow.formatInstantToString;
-import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MemberTest {
 
-    private static final Instant INSTANT_NOW = instantNow();
     private static final String TEAM_MEMBER_NAME = "Team Member Name";
-    private static final  String DATE_JOINED = formatInstantToString(INSTANT_NOW);
+    private static final String DATE_JOINED = formatInstantToString();
+    private static final String ROLE = "Elder";
     private static final int TICKETS_COLLECTED = 121;
     private static final int POINTS_COLLECTED = 19;
     private static final int ID = 1;
@@ -25,6 +22,7 @@ public class MemberTest {
         testMember = Member.builder()
                 .id(ID)
                 .name(TEAM_MEMBER_NAME)
+                .role(ROLE)
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
                 .pointsCollectedCurrentEvent(POINTS_COLLECTED)
                 .joinedTeam(DATE_JOINED)
@@ -36,6 +34,7 @@ public class MemberTest {
         Member member = Member.builder()
                 .id(ID)
                 .name(TEAM_MEMBER_NAME)
+                .role(ROLE)
                 .joinedTeam(DATE_JOINED)
                 .ticketsCollectedCurrentEvent(TICKETS_COLLECTED)
                 .pointsCollectedCurrentEvent(POINTS_COLLECTED)

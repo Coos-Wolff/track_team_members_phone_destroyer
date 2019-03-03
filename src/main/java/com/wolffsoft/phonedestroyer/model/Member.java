@@ -4,15 +4,19 @@ import lombok.Builder;
 import lombok.Value;
 
 import static com.wolffsoft.phonedestroyer.model.InstantNow.formatInstantToString;
-import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 
 @Value
 @Builder
 public class Member {
 
     private int id;
+
     @Builder.Default
-    private String joinedTeam = formatInstantToString(instantNow());
+    private String joinedTeam = formatInstantToString();
+
+    @Builder.Default
+    private String role = "Member";
+
     private String name;
     private int ticketsCollectedCurrentEvent;
     private int pointsCollectedCurrentEvent;
