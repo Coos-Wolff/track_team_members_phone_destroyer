@@ -6,7 +6,6 @@ import lombok.Value;
 import java.util.List;
 
 import static com.wolffsoft.phonedestroyer.model.InstantNow.formatInstantToString;
-import static com.wolffsoft.phonedestroyer.model.InstantNow.instantNow;
 
 @Value
 @Builder
@@ -16,7 +15,7 @@ public class Event {
     private String name;
     private String eventType;
     @Builder.Default
-    private String eventDate = formatInstantToString(instantNow());
+    private String eventDate = formatInstantToString();
     private List<Member> members;
     @Builder.Default
     private boolean eventHasEnded = false;

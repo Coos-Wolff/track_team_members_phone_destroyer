@@ -1,21 +1,14 @@
 package com.wolffsoft.phonedestroyer.model;
 
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+import java.time.LocalDate;
 
 public class InstantNow {
 
-    public static Instant instantNow() {
-        return Instant.now();
+    public static LocalDate localDateNow() {
+        return LocalDate.now();
     }
 
-    public static String formatInstantToString(Instant instant) {
-        DateTimeFormatter formatter = DateTimeFormatter
-                .ofLocalizedDate(FormatStyle.SHORT)
-                .withZone(ZoneId.systemDefault());
-
-        return formatter.format(instant);
+    public static String formatInstantToString() {
+        return localDateNow().toString();
     }
 }
