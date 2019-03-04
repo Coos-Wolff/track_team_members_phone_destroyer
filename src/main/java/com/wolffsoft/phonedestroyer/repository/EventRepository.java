@@ -2,7 +2,6 @@ package com.wolffsoft.phonedestroyer.repository;
 
 import com.wolffsoft.phonedestroyer.model.CreateEvent;
 import com.wolffsoft.phonedestroyer.model.Event;
-import com.wolffsoft.phonedestroyer.repository.mapper.EventMapper;
 import com.wolffsoft.phonedestroyer.repository.mapper.OptionalEventMapper;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
@@ -16,12 +15,10 @@ public class EventRepository {
 
     private DSLContext dslContext;
     private OptionalEventMapper optionalEventMapper;
-    private EventMapper eventMapper;
 
     public EventRepository(DSLContext dslContext) {
         this.dslContext = dslContext;
         this.optionalEventMapper = new OptionalEventMapper();
-        this.eventMapper = new EventMapper();
     }
 
     public void createNewEvent(CreateEvent createEvent) {
