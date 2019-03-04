@@ -55,19 +55,40 @@ public class Calculate {
     }
 
     private List<String> calculateMembersToKick(List<EventHistory> eventHistoryOfMembers) {
-        List<EventHistory> beginnersThreshold = new ArrayList<>();
-        List<EventHistory> membersThreshold = new ArrayList<>();
-        List<String> membersToKick = new ArrayList<>();
+        List<String> allMembersToKick = new ArrayList<>();
+        eventHistoryOfMembers.removeIf(this::removeAllEventHistoryBeforeTwoWeeks);
 
-        eventHistoryOfMembers.removeIf(eventHistory -> eventHistory.getEventDate().isBefore(TWO_WEEKS_AGO));
+        List<EventHistory> beginnersToKick = addBeginnersToKick(eventHistoryOfMembers);
+        List<EventHistory> membersToKick = addMembersToKick(eventHistoryOfMembers);
+
+        beginnersToKick.forEach(eventHistory -> allMembersToKick.add(eventHistory.getMemberName()));
+        getDuplicates(membersToKick).forEach(eventHistory -> allMembersToKick.add(eventHistory.getMemberName()));
+
+        return removeDuplicates(allMembersToKick);
+    }
+
+    private boolean removeAllEventHistoryBeforeTwoWeeks(EventHistory eventHistory) {
+        return eventHistory.getEventDate().isBefore(TWO_WEEKS_AGO);
+    }
+
+    private List<EventHistory> addBeginnersToKick(List<EventHistory> eventHistoryOfMembers) {
+        List<EventHistory> beginnersThreshold = new ArrayList<>();
         eventHistoryOfMembers.forEach(eventHistory -> {
             if (thresholdBeginner(eventHistory)) {
                 beginnersThreshold.add(eventHistory);
-            } else if (thresholdPoints(eventHistory) || thresholdTickets(eventHistory)) {
+            }
+        });
+        return beginnersThreshold;
+    }
+
+    private List<EventHistory> addMembersToKick(List<EventHistory> eventHistoryOfMembers) {
+        List<EventHistory> membersThreshold = new ArrayList<>();
+        eventHistoryOfMembers.forEach(eventHistory -> {
+            if (thresholdPoints(eventHistory) || thresholdTickets(eventHistory)) {
                 membersThreshold.add(eventHistory);
             }
         });
-        beginnersThreshold.forEach(eventHistory -> membersToKick.add(eventHistory.getMemberName()));
+        return membersThreshold;
         getDuplicates(membersThreshold).forEach(eventHistory -> membersToKick.add(eventHistory.getMemberName()));
 
         return removeDuplicates(membersToKick);
