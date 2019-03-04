@@ -7,7 +7,6 @@ import com.wolffsoft.phonedestroyer.repository.mapper.OptionalEventMapper;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import static com.wolffsoft.phonedestroyer.persistance.repositories.jooq.Tables.EVENT;
@@ -32,14 +31,6 @@ public class EventRepository {
                 .execute();
     }
 
-    public Optional<Event> getEventById(int eventId) {
-        return dslContext
-                .select()
-                .from(EVENT)
-                .where(EVENT.ID.eq(eventId))
-                .fetchOne(optionalEventMapper);
-    }
-
     public Optional<Event> getEventByName(String name) {
         return dslContext
                 .select()
@@ -54,15 +45,5 @@ public class EventRepository {
                 .set(EVENT.HAS_ENDED, true)
                 .where(EVENT.NAME.eq(event.getName()))
                 .execute();
-    }
-
-    public List<Event> getLastFourEvents() {
-        return dslContext
-                .select()
-                .from(EVENT)
-                .where(EVENT.HAS_ENDED.eq(true))
-                .orderBy(EVENT.ID.desc())
-                .limit(2)
-                .fetch(eventMapper);
     }
 }

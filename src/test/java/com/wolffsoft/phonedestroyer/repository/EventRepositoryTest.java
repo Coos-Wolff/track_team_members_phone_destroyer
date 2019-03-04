@@ -6,7 +6,6 @@ import com.wolffsoft.phonedestroyer.model.Event;
 import org.jooq.DSLContext;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,15 +15,6 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
     @Override
     protected EventRepository createRepository(DSLContext dslContext) {
         return new EventRepository(dslContext);
-    }
-
-    @Test
-    public void testGetEventById() {
-        int eventId = 1;
-
-        Optional<Event> returnedEvent = repository.getEventById(eventId);
-
-        assertThat(returnedEvent.get().getName()).isEqualTo("Test Event 1");
     }
 
     @Test
@@ -63,14 +53,5 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
         Optional<Event> endedEvent = repository.getEventByName(eventCreated.get().getName());
 
         assertThat(endedEvent.get().isEventHasEnded()).isEqualTo(true);
-    }
-
-    @Test
-    public void testGetLastTwoEvents() {
-        List<Event> lastFourEvents = repository.getLastFourEvents();
-
-        assertThat(lastFourEvents.size()).isEqualTo(4);
-        assertThat(lastFourEvents.get(0).getName()).isEqualTo("Test Event 6");
-        assertThat(lastFourEvents.get(1).getName()).isEqualTo("Test Event 5");
     }
 }
