@@ -56,7 +56,7 @@ public class EventRepository {
                 .execute();
     }
 
-    public List<Event> getLastTwoEvents() {
+    public List<Event> getLastFourEvents() {
         return dslContext
                 .select()
                 .from(EVENT)

@@ -67,10 +67,10 @@ public class EventRepositoryTest extends AbstractTestRepository<EventRepository>
 
     @Test
     public void testGetLastTwoEvents() {
-        List<Event> lastTwoEvents = repository.getLastTwoEvents();
+        List<Event> lastFourEvents = repository.getLastFourEvents();
 
-        assertThat(lastTwoEvents.size()).isEqualTo(2);
-        assertThat(lastTwoEvents.get(0).getName()).isEqualTo("Test Event 6");
-        assertThat(lastTwoEvents.get(1).getName()).isEqualTo("Test Event 5");
+        assertThat(lastFourEvents.size()).isEqualTo(4);
+        assertThat(lastFourEvents.get(0).getName()).isEqualTo("Test Event 6");
+        assertThat(lastFourEvents.get(1).getName()).isEqualTo("Test Event 5");
     }
 }
