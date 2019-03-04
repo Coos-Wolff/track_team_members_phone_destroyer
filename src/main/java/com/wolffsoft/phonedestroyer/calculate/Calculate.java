@@ -91,9 +91,6 @@ public class Calculate {
             }
         });
         return membersThreshold;
-        getDuplicates(membersThreshold).forEach(eventHistory -> membersToKick.add(eventHistory.getMemberName()));
-
-        return removeDuplicates(membersToKick);
     }
 
     private List<String> calculateEldersToKick(List<EventHistory> eventHistoryOfElders) {
