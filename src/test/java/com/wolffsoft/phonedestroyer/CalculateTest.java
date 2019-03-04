@@ -34,7 +34,7 @@ public class CalculateTest {
     public void testCalculateMembersToBeKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testEventHistories);
 
-        List<String> memberNames = calculate.membersToBeKicked();
+        List<String> memberNames = calculate.membersToKick();
 
         assertThat(memberNames.size()).isEqualTo(3);
     }
