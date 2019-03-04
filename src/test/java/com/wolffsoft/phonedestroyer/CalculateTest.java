@@ -10,11 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.wolffsoft.phonedestroyer.helperclass.model.EventHistoryTestObject.getTestEventHistories;
-import static com.wolffsoft.phonedestroyer.helperclass.model.EventTestObject.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -49,17 +46,5 @@ public class CalculateTest {
         List<EventHistory> returnedEventHistories = calculate.getEventHistoryLastFourEvents();
 
         assertThat(returnedEventHistories.size()).isEqualTo(16);
-    }
-
-    @Test
-    public void test() {
-        List<String> eventNames = Stream.of(
-                testEvent4.getName(),
-                testEvent3.getName(),
-                testEvent2.getName(),
-                testEvent1.getName()
-        ).collect(Collectors.toList());
-
-        assertThat(eventNames.get(0)).isEqualTo(testEvent4.getName());
     }
 }
