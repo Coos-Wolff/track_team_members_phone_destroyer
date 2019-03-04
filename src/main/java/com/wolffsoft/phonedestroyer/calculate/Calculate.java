@@ -27,7 +27,8 @@ public class Calculate {
         List<EventHistory> eventHistoryOfMembers = new ArrayList<>();
         List<EventHistory> eventHistoryOfElders = new ArrayList<>();
 
-        divideMembersIntoSeparateLists(eventHistoryLastFourEvents, eventHistoryOfElders, eventHistoryOfMembers);
+        List<EventHistory> eventHistoryLastFourEvents = getEventHistoryLastFourEvents();
+        divideEventHistoryIntoLists(eventHistoryLastFourEvents, eventHistoryOfElders, eventHistoryOfMembers);
         calculateMembersToKick(eventHistoryOfMembers).forEach(membersToKick::add);
         calculateEldersToKick(eventHistoryOfElders).forEach(membersToKick::add);
 
@@ -42,6 +43,7 @@ public class Calculate {
     }
 
     private void divideMembersIntoSeparateLists(
+    private void divideEventHistoryIntoLists(
             List<EventHistory> eventHistoryLastFourEvents,
             List<EventHistory> eventHistoryOfElders,
             List<EventHistory> eventHistoryOfMembers) {
