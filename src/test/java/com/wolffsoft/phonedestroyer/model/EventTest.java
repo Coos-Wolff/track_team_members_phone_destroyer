@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.getTestTeamMembers;
+import static com.wolffsoft.phonedestroyer.model.InstantNow.localDateNow;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EventTest {
@@ -21,6 +22,7 @@ public class EventTest {
                 .id(1)
                 .name(EVENT_NAME)
                 .members(testMembers)
+                .eventDate(localDateNow())
                 .eventHasEnded(false)
                 .eventType("Tickets")
                 .build();
@@ -29,6 +31,7 @@ public class EventTest {
                 .id(1)
                 .members(testMembers)
                 .name(EVENT_NAME)
+                .eventDate(localDateNow())
                 .eventHasEnded(true)
                 .eventType("Points")
                 .build();

@@ -6,6 +6,7 @@ import org.jooq.DSLContext;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,14 +31,14 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
         member13 = Member.builder()
                 .id(13)
                 .name("Team Member 13")
-                .joinedTeam("01-01-2019")
+                .dateJoinedTeam(LocalDate.of(2019, 1, 1))
                 .pointsCollectedCurrentEvent(111)
                 .build();
 
         member14 = Member.builder()
                 .id(14)
                 .name("Team Member 14")
-                .joinedTeam("01-01-2019")
+                .dateJoinedTeam(LocalDate.of(2019, 1, 1))
                 .pointsCollectedCurrentEvent(333)
                 .build();
     }
@@ -85,11 +86,11 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
         assertThat(members.get(0).getId()).isEqualTo(1);
         assertThat(members.get(0).getName()).isEqualTo(MEMBER_NAME_1);
         assertThat(members.get(0).getTicketsCollectedCurrentEvent()).isEqualTo(150);
-        assertThat(members.get(0).getJoinedTeam()).isEqualTo("01-01-2019");
+        assertThat(members.get(0).getDateJoinedTeam()).isEqualTo("2019-01-01");
         assertThat(members.get(1).getId()).isEqualTo(2);
         assertThat(members.get(1).getName()).isEqualTo(MEMBER_NAME_2);
         assertThat(members.get(1).getTicketsCollectedCurrentEvent()).isEqualTo(123);
-        assertThat(members.get(1).getJoinedTeam()).isEqualTo("02-02-2019");
+        assertThat(members.get(1).getDateJoinedTeam()).isEqualTo("2019-02-02");
     }
 
     @Test
@@ -127,10 +128,10 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
 
         assertThat(members.get(0).getName()).isEqualTo(MEMBER_NAME_1);
         assertThat(members.get(0).getTicketsCollectedCurrentEvent()).isEqualTo(150);
-        assertThat(members.get(0).getJoinedTeam()).isEqualTo("01-01-2019");
+        assertThat(members.get(0).getDateJoinedTeam()).isEqualTo("2019-01-01");
         assertThat(members.get(1).getName()).isEqualTo(MEMBER_NAME_2);
         assertThat(members.get(1).getTicketsCollectedCurrentEvent()).isEqualTo(123);
-        assertThat(members.get(1).getJoinedTeam()).isEqualTo("02-02-2019");
+        assertThat(members.get(1).getDateJoinedTeam()).isEqualTo("2019-02-02");
     }
 
     @Test
@@ -159,7 +160,7 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
         member = Member.builder()
                 .id(1)
                 .name(name)
-                .joinedTeam("01-01-2019")
+                .dateJoinedTeam(LocalDate.of(2019, 1, 1))
                 .ticketsCollectedCurrentEvent(190)
                 .build();
 
@@ -192,7 +193,7 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
         member = Member.builder()
                 .id(100)
                 .name(name)
-                .joinedTeam("01-02-2019")
+                .dateJoinedTeam(LocalDate.of(2019, 2, 1))
                 .ticketsCollectedCurrentEvent(0)
                 .pointsCollectedCurrentEvent(123)
                 .build();
