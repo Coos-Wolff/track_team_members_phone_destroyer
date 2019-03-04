@@ -92,10 +92,6 @@ public class Calculate {
                 (thresholdTickets(eventHistory) || thresholdPoints(eventHistory));
     }
 
-    private boolean thresHoldElder(EventHistory eventHistory) {
-        return true;
-    }
-
     private boolean thresholdTickets(EventHistory eventHistory) {
         return eventHistory.getEventTicketsCollected() < 50 && eventHistory.getPointsCollected() == 0;
     }
