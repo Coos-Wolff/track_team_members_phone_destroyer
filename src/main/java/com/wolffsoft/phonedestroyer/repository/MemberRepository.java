@@ -31,7 +31,7 @@ public class MemberRepository {
                         MEMBER.TICKETS_COLLECTED_CURRENT_EVENT, MEMBER.POINTS_COLLECTED_CURRENT_EVENT
                 )
                 .values(member.getName(),
-                        member.getJoinedTeam(),
+                        member.getDateJoinedTeam().toString(),
                         member.getTicketsCollectedCurrentEvent(),
                         member.getPointsCollectedCurrentEvent()
                 )
