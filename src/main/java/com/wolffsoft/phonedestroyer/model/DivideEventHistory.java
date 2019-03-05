@@ -5,7 +5,7 @@ import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DividedEventHistory {
+public class DivideEventHistory {
 
     private List<EventHistory> eventHistoryElders = new ArrayList<>();
     private List<EventHistory> eventHistoryMembers = new ArrayList<>();
