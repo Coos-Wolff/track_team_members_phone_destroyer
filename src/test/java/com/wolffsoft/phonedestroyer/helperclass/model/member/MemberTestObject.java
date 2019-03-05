@@ -1,4 +1,4 @@
-package com.wolffsoft.phonedestroyer.helperclass.model;
+package com.wolffsoft.phonedestroyer.helperclass.model.member;
 
 import com.wolffsoft.phonedestroyer.model.Member;
 

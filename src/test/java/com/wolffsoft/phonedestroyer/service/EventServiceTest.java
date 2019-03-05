@@ -18,8 +18,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 import java.util.Optional;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.EventHistoryTestObject.getTestEventHistories;
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;
+import static com.wolffsoft.phonedestroyer.helperclass.model.event.EventHistoryTestObject.getTestEventHistories;
+import static com.wolffsoft.phonedestroyer.helperclass.model.member.MemberTestObject.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 

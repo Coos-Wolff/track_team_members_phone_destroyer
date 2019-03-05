@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.getTestTeamMembers;
+import static com.wolffsoft.phonedestroyer.helperclass.model.member.MemberTestObject.getTestTeamMembers;
 import static com.wolffsoft.phonedestroyer.model.InstantNow.localDateNow;
 import static org.assertj.core.api.Assertions.assertThat;
 

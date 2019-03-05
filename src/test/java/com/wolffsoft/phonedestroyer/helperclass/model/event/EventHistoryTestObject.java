@@ -1,4 +1,4 @@
-package com.wolffsoft.phonedestroyer.helperclass.model;
+package com.wolffsoft.phonedestroyer.helperclass.model.event;
 
 import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.EventTestObject.*;
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;
+import static com.wolffsoft.phonedestroyer.helperclass.model.event.EventTestObject.*;
+import static com.wolffsoft.phonedestroyer.helperclass.model.member.MemberTestObject.*;
 
 public class EventHistoryTestObject {
 

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.*;
+import static com.wolffsoft.phonedestroyer.helperclass.model.member.MemberTestObject.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 

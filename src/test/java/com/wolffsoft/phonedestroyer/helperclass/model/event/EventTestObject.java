@@ -1,11 +1,11 @@
-package com.wolffsoft.phonedestroyer.helperclass.model;
+package com.wolffsoft.phonedestroyer.helperclass.model.event;
 
 import com.wolffsoft.phonedestroyer.model.event.Event;
 import com.wolffsoft.phonedestroyer.model.Member;
 
 import java.util.List;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.MemberTestObject.getTestTeamMembers;
+import static com.wolffsoft.phonedestroyer.helperclass.model.member.MemberTestObject.getTestTeamMembers;
 import static com.wolffsoft.phonedestroyer.model.InstantNow.localDateNow;
 
 public class EventTestObject {
