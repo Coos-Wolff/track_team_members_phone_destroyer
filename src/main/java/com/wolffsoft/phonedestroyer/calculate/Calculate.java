@@ -21,7 +21,7 @@ public class Calculate {
         this.eventHistoryRepository = eventHistoryRepository;
     }
 
-    public List<String> kickMembers() {
+    public List<String> calculateMembersToBeKicked() {
         List<String> membersToKick = new ArrayList<>();
         List<EventHistory> historyLastFourEvents = getEventHistoryLastTwoEvents();
         DivideEventHistory divideEventHistory = divideBasedOnRole(historyLastFourEvents);
@@ -31,7 +31,7 @@ public class Calculate {
         return membersToKick;
     }
 
-    public List<String> eldersToDemote() {
+    public List<String> calculateEldersToDemote() {
         List<EventHistory> historyLastFourEvents = getEventHistoryLastTwoEvents();
 
         DivideEventHistory divideEventHistory = divideBasedOnRole(historyLastFourEvents);
@@ -94,15 +94,6 @@ public class Calculate {
         return membersThreshold;
     }
 
-//    private void demoteElder(DivideEventHistory divideEventHistory) {
-//        divideEventHistory
-//                .getEventHistoryElders()
-//                .forEach(eventHistory -> {
-//                    if ()
-//                });
-//    }
-
-    // TODO this method should demote Elders to members
     private List<String> demoteElderToMember(DivideEventHistory divideEventHistory) {
         List<EventHistory> eldersThreshold = new ArrayList<>();
         List<String> eldersToDemote = new ArrayList<>();

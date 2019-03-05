@@ -48,7 +48,7 @@ public class CalculateTest {
     public void testCalculateMemberToBeKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryToKick);
 
-        List<String> memberNames = calculate.kickMembers();
+        List<String> memberNames = calculate.calculateMembersToBeKicked();
 
         assertThat(memberNames.size()).isEqualTo(2);
     }
@@ -57,7 +57,7 @@ public class CalculateTest {
     public void testMembersNotKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryNotKicked);
 
-        List<String> memberNames = calculate.kickMembers();
+        List<String> memberNames = calculate.calculateMembersToBeKicked();
 
         assertThat(memberNames.size()).isEqualTo(0);
     }
@@ -66,7 +66,7 @@ public class CalculateTest {
     public void testMembersKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryToKick);
 
-        List<String> memberNames = calculate.kickMembers();
+        List<String> memberNames = calculate.calculateMembersToBeKicked();
 
         assertThat(memberNames.size()).isEqualTo(2);
     }
@@ -75,7 +75,7 @@ public class CalculateTest {
     public void testDemoteElderToMember() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testElderHistoryToKick);
 
-        List<String> memberNames = calculate.eldersToDemote();
+        List<String> memberNames = calculate.calculateEldersToDemote();
 
         assertThat(memberNames.size()).isEqualTo(2);
     }
@@ -84,7 +84,7 @@ public class CalculateTest {
     public void testNoElderToDemoteToMember() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testElderHistoryNotKicked);
 
-        List<String> memberNames = calculate.eldersToDemote();
+        List<String> memberNames = calculate.calculateEldersToDemote();
 
         assertThat(memberNames.size()).isEqualTo(0);
     }
