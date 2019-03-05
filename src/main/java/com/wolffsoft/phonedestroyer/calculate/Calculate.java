@@ -1,5 +1,6 @@
 package com.wolffsoft.phonedestroyer.calculate;
 
+import com.wolffsoft.phonedestroyer.model.DividedEventHistory;
 import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
 
@@ -21,16 +22,14 @@ public class Calculate {
         this.eventHistoryRepository = eventHistoryRepository;
     }
 
-    public List<String> membersToBeKicked() {
-        List<EventHistory> eventHistoryLastFourEvents = getEventHistoryLastFourEvents();
+    public List<String> membersToKick() {
         List<String> membersToKick = new ArrayList<>();
-        List<EventHistory> eventHistoryOfMembers = new ArrayList<>();
-        List<EventHistory> eventHistoryOfElders = new ArrayList<>();
-
         List<EventHistory> eventHistoryLastFourEvents = getEventHistoryLastFourEvents();
-        divideEventHistoryIntoLists(eventHistoryLastFourEvents, eventHistoryOfElders, eventHistoryOfMembers);
-        calculateMembersToKick(eventHistoryOfMembers).forEach(membersToKick::add);
-        calculateEldersToKick(eventHistoryOfElders).forEach(membersToKick::add);
+
+        eventHistoryLastFourEvents.removeIf(this::removeOldEvents);
+        DividedEventHistory dividedEventHistory = divideEventHistoryIntoLists(eventHistoryLastFourEvents);
+        calculateMembersToKick(dividedEventHistory).forEach(membersToKick::add);
+        calculateEldersToKick(dividedEventHistory).forEach(membersToKick::add);
 
         return membersToKick;
     }
@@ -42,26 +41,23 @@ public class Calculate {
         return eventHistories;
     }
 
-    private void divideMembersIntoSeparateLists(
-    private void divideEventHistoryIntoLists(
-            List<EventHistory> eventHistoryLastFourEvents,
-            List<EventHistory> eventHistoryOfElders,
-            List<EventHistory> eventHistoryOfMembers) {
+    private DividedEventHistory divideEventHistoryIntoLists(
+            List<EventHistory> eventHistoryLastFourEvents) {
+        DividedEventHistory dividedEventHistory = new DividedEventHistory();
         eventHistoryLastFourEvents.forEach(eventHistory -> {
             if (eventHistory.getRole().equalsIgnoreCase("Elder")) {
-                eventHistoryOfElders.add(eventHistory);
+                dividedEventHistory.addForElders(eventHistory);
             } else {
-                eventHistoryOfMembers.add(eventHistory);
+                dividedEventHistory.addForMembers(eventHistory);
             }
         });
+        return dividedEventHistory;
     }
 
-    private List<String> calculateMembersToKick(List<EventHistory> eventHistoryOfMembers) {
+    private List<String> calculateMembersToKick(DividedEventHistory dividedEventHistory) {
         List<String> allMembersToKick = new ArrayList<>();
-        eventHistoryOfMembers.removeIf(this::removeAllEventHistoryBeforeTwoWeeks);
-
-        List<EventHistory> beginnersToKick = addBeginnersToKick(eventHistoryOfMembers);
-        List<EventHistory> membersToKick = addMembersToKick(eventHistoryOfMembers);
+        List<EventHistory> beginnersToKick = addBeginnersToKick(dividedEventHistory);
+        List<EventHistory> membersToKick = addMembersToKick(dividedEventHistory);
 
         beginnersToKick.forEach(eventHistory -> allMembersToKick.add(eventHistory.getMemberName()));
         getDuplicates(membersToKick).forEach(eventHistory -> allMembersToKick.add(eventHistory.getMemberName()));
@@ -69,23 +65,28 @@ public class Calculate {
         return removeDuplicates(allMembersToKick);
     }
 
-    private boolean removeAllEventHistoryBeforeTwoWeeks(EventHistory eventHistory) {
-        return eventHistory.getEventDate().isBefore(TWO_WEEKS_AGO);
+    private boolean removeOldEvents(EventHistory eventHistory) {
+        return eventHistory.getRole().equalsIgnoreCase("Member") &&
+                eventHistory.getEventDate().isBefore(TWO_WEEKS_AGO);
     }
 
-    private List<EventHistory> addBeginnersToKick(List<EventHistory> eventHistoryOfMembers) {
+    private List<EventHistory> addBeginnersToKick(DividedEventHistory dividedEventHistory) {
         List<EventHistory> beginnersThreshold = new ArrayList<>();
-        eventHistoryOfMembers.forEach(eventHistory -> {
-            if (thresholdBeginner(eventHistory)) {
-                beginnersThreshold.add(eventHistory);
-            }
-        });
+        dividedEventHistory
+                .getEventHistoryMembers()
+                .forEach(eventHistory -> {
+                    if (thresholdBeginner(eventHistory)) {
+                        beginnersThreshold.add(eventHistory);
+                    }
+                });
         return beginnersThreshold;
     }
 
-    private List<EventHistory> addMembersToKick(List<EventHistory> eventHistoryOfMembers) {
+    private List<EventHistory> addMembersToKick(DividedEventHistory dividedEventHistory) {
         List<EventHistory> membersThreshold = new ArrayList<>();
-        eventHistoryOfMembers.forEach(eventHistory -> {
+        dividedEventHistory
+                .getEventHistoryMembers()
+                .forEach(eventHistory -> {
             if (thresholdPoints(eventHistory) || thresholdTickets(eventHistory)) {
                 membersThreshold.add(eventHistory);
             }
@@ -93,10 +94,12 @@ public class Calculate {
         return membersThreshold;
     }
 
-    private List<String> calculateEldersToKick(List<EventHistory> eventHistoryOfElders) {
+    private List<String> calculateEldersToKick(DividedEventHistory dividedEventHistory) {
         List<EventHistory> eldersThreshold = new ArrayList<>();
         List<String> eldersToKick = new ArrayList<>();
-        eventHistoryOfElders.forEach(eventHistory -> {
+        dividedEventHistory
+                .getEventHistoryElders()
+                .forEach(eventHistory -> {
             if (thresholdPoints(eventHistory) || thresholdTickets(eventHistory)) {
                 eldersThreshold.add(eventHistory);
             }
