@@ -10,16 +10,16 @@ import static com.wolffsoft.phonedestroyer.model.InstantNow.localDateNow;
 
 public class ElderEventDemoted {
 
-    public static Event elderEventToKick1 = getElderEventDemoted1();
-    public static Event elderEventToKick2 = getElderEventDemoted2();
-    public static List<Member> testEldersToKick = getTestEldersDemoted();
+    public static Event elderEventDemoted1 = getElderEventDemoted1();
+    public static Event elderEventDemoted2 = getElderEventDemoted2();
+    public static List<Member> testEldersDemoted = getTestEldersDemoted();
 
     public static Event getElderEventDemoted1() {
         return Event.builder()
                 .id(1)
                 .name("Test Event 1")
                 .eventDate(localDateNow().minusWeeks(1))
-                .members(testEldersToKick)
+                .members(testEldersDemoted)
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class ElderEventDemoted {
                 .id(2)
                 .name("Test Event 2")
                 .eventDate(localDateNow())
-                .members(testEldersToKick)
+                .members(testEldersDemoted)
                 .build();
     }
 }
