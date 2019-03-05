@@ -15,33 +15,38 @@ public class Calculate {
 
     private static final LocalDate ONE_WEEK_AGO = LocalDate.now().minusWeeks(1);
     private static final LocalDate TWO_WEEKS_AGO = LocalDate.now().minusWeeks(2);
-    private static final LocalDate FOUR_WEEKS_AGO = LocalDate.now().minusWeeks(4);
     private EventHistoryRepository eventHistoryRepository;
 
     public Calculate(EventHistoryRepository eventHistoryRepository) {
         this.eventHistoryRepository = eventHistoryRepository;
     }
 
-    public List<String> membersToKick() {
+    public List<String> kickMembers() {
         List<String> membersToKick = new ArrayList<>();
-        List<EventHistory> historyLastFourEvents = getEventHistoryLastFourEvents();
+        List<EventHistory> historyLastFourEvents = getEventHistoryLastTwoEvents();
+        DivideEventHistory divideEventHistory = divideBasedOnRole(historyLastFourEvents);
 
-        historyLastFourEvents.removeIf(this::removeOldEvents);
-        DivideEventHistory divideEventHistory = divideEventHistoryIntoLists(historyLastFourEvents);
         calculateMembersToKick(divideEventHistory).forEach(membersToKick::add);
-        calculateEldersToKick(divideEventHistory).forEach(membersToKick::add);
 
         return membersToKick;
     }
 
-    public List<EventHistory> getEventHistoryLastFourEvents() {
+    public List<String> eldersToDemote() {
+        List<EventHistory> historyLastFourEvents = getEventHistoryLastTwoEvents();
+
+        DivideEventHistory divideEventHistory = divideBasedOnRole(historyLastFourEvents);
+
+        return demoteElderToMember(divideEventHistory);
+    }
+
+    private List<EventHistory> getEventHistoryLastTwoEvents() {
         List<EventHistory> eventHistories = eventHistoryRepository.getEventHistories();
-        eventHistories.removeIf(eventHistory -> eventHistory.getEventDate().isBefore(FOUR_WEEKS_AGO));
+        eventHistories.removeIf(eventHistory -> eventHistory.getEventDate().isBefore(TWO_WEEKS_AGO));
 
         return eventHistories;
     }
 
-    private DivideEventHistory divideEventHistoryIntoLists(
+    private DivideEventHistory divideBasedOnRole(
             List<EventHistory> eventHistoryLastFourEvents) {
         DivideEventHistory divideEventHistory = new DivideEventHistory();
         eventHistoryLastFourEvents.forEach(eventHistory -> {
@@ -63,11 +68,6 @@ public class Calculate {
         getDuplicates(membersToKick).forEach(eventHistory -> allMembersToKick.add(eventHistory.getMemberName()));
 
         return removeDuplicates(allMembersToKick);
-    }
-
-    private boolean removeOldEvents(EventHistory eventHistory) {
-        return eventHistory.getRole().equalsIgnoreCase("Member") &&
-                eventHistory.getEventDate().isBefore(TWO_WEEKS_AGO);
     }
 
     private List<EventHistory> addBeginnersToKick(DivideEventHistory divideEventHistory) {
@@ -94,9 +94,18 @@ public class Calculate {
         return membersThreshold;
     }
 
-    private List<String> calculateEldersToKick(DivideEventHistory divideEventHistory) {
+//    private void demoteElder(DivideEventHistory divideEventHistory) {
+//        divideEventHistory
+//                .getEventHistoryElders()
+//                .forEach(eventHistory -> {
+//                    if ()
+//                });
+//    }
+
+    // TODO this method should demote Elders to members
+    private List<String> demoteElderToMember(DivideEventHistory divideEventHistory) {
         List<EventHistory> eldersThreshold = new ArrayList<>();
-        List<String> eldersToKick = new ArrayList<>();
+        List<String> eldersToDemote = new ArrayList<>();
         divideEventHistory
                 .getEventHistoryElders()
                 .forEach(eventHistory -> {
@@ -104,9 +113,9 @@ public class Calculate {
                 eldersThreshold.add(eventHistory);
             }
         });
-        getDuplicates(eldersThreshold).forEach(eventHistory -> eldersToKick.add(eventHistory.getMemberName()));
+        getDuplicates(eldersThreshold).forEach(eventHistory -> eldersToDemote.add(eventHistory.getMemberName()));
 
-        return removeDuplicates(eldersToKick);
+        return removeDuplicates(eldersToDemote);
     }
 
     private boolean thresholdBeginner(EventHistory eventHistory) {
