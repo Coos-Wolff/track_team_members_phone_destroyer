@@ -1,7 +1,7 @@
 package com.wolffsoft.phonedestroyer.repository;
 
-import com.wolffsoft.phonedestroyer.model.Event;
-import com.wolffsoft.phonedestroyer.model.EventHistory;
+import com.wolffsoft.phonedestroyer.model.event.Event;
+import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import com.wolffsoft.phonedestroyer.model.Member;
 import com.wolffsoft.phonedestroyer.repository.mapper.EventHistoryMapper;
 import org.jooq.DSLContext;

@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.calculate;
 
-import com.wolffsoft.phonedestroyer.model.EventHistory;
+import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
 
 import java.time.LocalDate;

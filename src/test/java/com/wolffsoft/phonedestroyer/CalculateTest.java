@@ -1,7 +1,7 @@
 package com.wolffsoft.phonedestroyer;
 
 import com.wolffsoft.phonedestroyer.calculate.Calculate;
-import com.wolffsoft.phonedestroyer.model.EventHistory;
+import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
 import org.junit.Before;
 import org.junit.Test;

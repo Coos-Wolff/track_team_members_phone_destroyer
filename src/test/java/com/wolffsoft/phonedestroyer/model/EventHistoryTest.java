@@ -1,5 +1,6 @@
 package com.wolffsoft.phonedestroyer.model;
 
+import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import org.junit.Before;
 import org.junit.Test;
 

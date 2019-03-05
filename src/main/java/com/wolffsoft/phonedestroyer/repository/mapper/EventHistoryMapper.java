@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.repository.mapper;
 
-import com.wolffsoft.phonedestroyer.model.EventHistory;
+import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 import org.jooq.Record;
 import org.jooq.RecordMapper;
 

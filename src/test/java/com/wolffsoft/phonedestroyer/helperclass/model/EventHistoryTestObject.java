@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.helperclass.model;
 
-import com.wolffsoft.phonedestroyer.model.EventHistory;
+import com.wolffsoft.phonedestroyer.model.event.EventHistory;
 
 import java.util.List;
 import java.util.stream.Collectors;
