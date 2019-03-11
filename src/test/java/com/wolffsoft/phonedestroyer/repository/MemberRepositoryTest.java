@@ -103,6 +103,10 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
         repository.deleteMemberByName(name);
 
         Optional<Member> deletedTeamMember = repository.getMemberByName(name);
+
+        assertThat(deletedTeamMember).isNull();
+    }
+
     @Test
     public void testDeleteMemberById() {
         int addedMember = repository.addMember(member13);

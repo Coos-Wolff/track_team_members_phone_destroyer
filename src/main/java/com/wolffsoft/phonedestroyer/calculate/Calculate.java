@@ -46,8 +46,7 @@ public class Calculate {
         return eventHistories;
     }
 
-    private DivideEventHistory divideBasedOnRole(
-            List<EventHistory> eventHistoryLastFourEvents) {
+    private DivideEventHistory divideBasedOnRole(List<EventHistory> eventHistoryLastFourEvents) {
         DivideEventHistory divideEventHistory = new DivideEventHistory();
         eventHistoryLastFourEvents.forEach(eventHistory -> {
             if (eventHistory.getRole().equalsIgnoreCase("Elder")) {
