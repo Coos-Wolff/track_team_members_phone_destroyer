@@ -18,7 +18,7 @@ CREATE TABLE member
   name                            VARCHAR(255),
   date_joined                     VARCHAR(30) NOT NULL,
   tickets_collected_current_event INT(6)      NOT NULL DEFAULT 0,
-  points_collected_current_event  INT(6),
+  points_collected_current_event  INT(6)      NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 );
 
