@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <title>Delete the Bastard</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <td><a href="/index" class="btn btn-blue"><i class="fa fa-eye"></i> Home</a></td>
+            <td><a href="/showmembers" class="btn btn-blue"><i class="fa fa-eye"></i> Show the Bastards</a></td>
+            <td><a href="/addmembers" class="btn btn-blue"><i class="fa fa-trash-alt"></i> Add the Bastards</a></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <th>Name</th>
+            <th>Delete the Bastard!</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(members)}">
+            <td>No Members Available</td>
+        </tr>
+        <tr th:each="member, iStat : ${members}">
+            <td th:text="${iStat.count}"></td>
+            <td th:text="${member.getName()}"></td>
+            <td>
+                <form th:action="@{'/delete/{id}'(id=${iStat.current.getId()})}" th:method="delete">
+                    <button class="" th:style="'color:red;'"><i class="fa fa-trash-alt"></i>  Delete the Bastard</button>
+                </form>
+            </td>
+        <tr>
+
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
