@@ -22,7 +22,7 @@ public class MemberServiceTest {
 
     private static final String EVENT_NAME = "Test Event 1";
 
-    private List<Member> members;
+    private List<Member> testMembers;
     private Member member1;
 
     @Mock
@@ -33,7 +33,7 @@ public class MemberServiceTest {
     @Before
     public void setup() {
         memberService = new MemberService(memberRepository);
-        members = getTestTeamMembers();
+        testMembers = getTestTeamMembers();
         member1 = testMember1;
     }
 
@@ -61,24 +61,24 @@ public class MemberServiceTest {
 
     @Test
     public void testGetMembersByEvent() {
-        when(memberRepository.getMembersByEventName(EVENT_NAME)).thenReturn(members);
+        when(memberRepository.getMembersByEventName(EVENT_NAME)).thenReturn(testMembers);
 
         List<Member> returnedMembers = memberService.getMembersByEventName(EVENT_NAME);
 
-        assertThat(returnedMembers).isEqualTo(members);
+        assertThat(returnedMembers).isEqualTo(testMembers);
     }
 
     @Test
     public void testSetTicketsCollected() {
         ArgumentCaptor<Member> argumentCaptor = ArgumentCaptor.forClass(Member.class);
 
-        members.forEach(member -> memberService.setTicketsCollected(member));
+        testMembers.forEach(member -> memberService.setTicketsCollected(member));
 
         verify(memberRepository, times(16)).setTicketsCollected(argumentCaptor.capture());
 
         List<Member> capturedMembers = argumentCaptor.getAllValues();
 
-        assertThat(capturedMembers).isEqualTo(members);
+        assertThat(capturedMembers).isEqualTo(testMembers);
     }
 
     @Test
