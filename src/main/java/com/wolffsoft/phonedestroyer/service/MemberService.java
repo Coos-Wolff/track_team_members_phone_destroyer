@@ -31,6 +31,10 @@ public class MemberService {
         memberRepository.deleteMemberByName(memberName);
     }
 
+    public void deleteMemberById(int id) {
+        memberRepository.deleteMemberById(id);
+    }
+
     public void kickMember(List<String> members) {
         members.forEach(member -> memberRepository.deleteMemberByName(member));
     }

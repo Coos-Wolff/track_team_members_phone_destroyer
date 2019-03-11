@@ -64,6 +64,13 @@ public class MemberRepository {
                 .execute();
     }
 
+    public void deleteMemberById(int id) {
+        dslContext
+                .deleteFrom(MEMBER)
+                .where(MEMBER.ID.eq(id))
+                .execute();
+    }
+
     public void deleteMembersByName(List<Member> members) {
         members.forEach(teamMember -> deleteMemberByName(teamMember.getName()));
     }

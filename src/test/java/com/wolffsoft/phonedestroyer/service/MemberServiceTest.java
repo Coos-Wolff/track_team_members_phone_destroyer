@@ -85,6 +85,18 @@ public class MemberServiceTest {
     }
 
     @Test
+    public void testDeleteMemberById() {
+        ArgumentCaptor<Integer> argumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        memberService.deleteMemberById(member1.getId());
+
+        verify(memberRepository).deleteMemberById(argumentCaptor.capture());
+
+        Integer capturedMemberId = argumentCaptor.getValue();
+
+        assertThat(capturedMemberId).isEqualTo(member1.getId());
+    }
+
+    @Test
     public void testKickMember() {
         ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
         List<String> members = Stream.of(testMember1.getName(), testMember2.getName())
