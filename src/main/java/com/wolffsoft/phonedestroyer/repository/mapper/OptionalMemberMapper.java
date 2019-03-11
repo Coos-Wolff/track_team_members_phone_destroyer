@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.repository.mapper;
 
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import org.jooq.Record;
 import org.jooq.RecordMapper;
 

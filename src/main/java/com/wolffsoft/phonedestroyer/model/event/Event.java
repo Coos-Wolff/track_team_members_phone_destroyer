@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.model.event;
 
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import lombok.Builder;
 import lombok.Value;
 

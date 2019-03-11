@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.service;
 
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import com.wolffsoft.phonedestroyer.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 

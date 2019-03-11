@@ -3,7 +3,7 @@ package com.wolffsoft.phonedestroyer.service;
 import com.wolffsoft.phonedestroyer.model.CreateEvent;
 import com.wolffsoft.phonedestroyer.model.event.Event;
 import com.wolffsoft.phonedestroyer.model.event.EventTicket;
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import com.wolffsoft.phonedestroyer.repository.EventHistoryRepository;
 import com.wolffsoft.phonedestroyer.repository.EventMemberRepository;
 import com.wolffsoft.phonedestroyer.repository.EventRepository;

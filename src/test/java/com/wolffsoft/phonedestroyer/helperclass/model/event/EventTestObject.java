@@ -1,7 +1,7 @@
 package com.wolffsoft.phonedestroyer.helperclass.model.event;
 
 import com.wolffsoft.phonedestroyer.model.event.Event;
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 
 import java.util.List;
 

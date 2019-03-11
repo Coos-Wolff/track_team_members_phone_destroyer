@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.repository;
 
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import com.wolffsoft.phonedestroyer.repository.mapper.OptionalMemberMapper;
 import com.wolffsoft.phonedestroyer.repository.mapper.MemberMapper;
 import org.jooq.DSLContext;

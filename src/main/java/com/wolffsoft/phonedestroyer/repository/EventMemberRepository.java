@@ -1,7 +1,7 @@
 package com.wolffsoft.phonedestroyer.repository;
 
 import com.wolffsoft.phonedestroyer.model.event.Event;
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 

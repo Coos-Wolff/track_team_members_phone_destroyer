@@ -1,5 +1,6 @@
-package com.wolffsoft.phonedestroyer.model;
+package com.wolffsoft.phonedestroyer.model.member;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
@@ -9,9 +10,11 @@ import static com.wolffsoft.phonedestroyer.model.InstantNow.localDateNow;
 
 @Value
 @Builder
+@AllArgsConstructor
 public class Member {
 
-    private int id;
+    @Builder.Default
+    private int id = 0;
 
     @Builder.Default
     private LocalDate dateJoinedTeam = localDateNow();
@@ -20,6 +23,10 @@ public class Member {
     private String role = "Member";
 
     private String name;
-    private int ticketsCollectedCurrentEvent;
-    private int pointsCollectedCurrentEvent;
+
+    @Builder.Default
+    private int ticketsCollectedCurrentEvent = 0;
+
+    @Builder.Default
+    private int pointsCollectedCurrentEvent = 0;
 }

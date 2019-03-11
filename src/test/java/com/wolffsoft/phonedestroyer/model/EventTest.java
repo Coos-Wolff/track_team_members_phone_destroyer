@@ -1,6 +1,7 @@
 package com.wolffsoft.phonedestroyer.model;
 
 import com.wolffsoft.phonedestroyer.model.event.Event;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import org.junit.Before;
 import org.junit.Test;
 

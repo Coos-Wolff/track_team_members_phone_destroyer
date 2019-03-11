@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.helperclass.model.event.elder;
 
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 import com.wolffsoft.phonedestroyer.model.event.Event;
 
 import java.util.List;

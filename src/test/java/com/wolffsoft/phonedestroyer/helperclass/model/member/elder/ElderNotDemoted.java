@@ -1,6 +1,6 @@
 package com.wolffsoft.phonedestroyer.helperclass.model.member.elder;
 
-import com.wolffsoft.phonedestroyer.model.Member;
+import com.wolffsoft.phonedestroyer.model.member.Member;
 
 import java.time.LocalDate;
 import java.util.List;
