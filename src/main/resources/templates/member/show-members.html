@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" rel="stylesheet" >
+    <title>Show Members</title>
+</head>
+<body>
+    <h1>This is our collection of Ginger Bastards</h1>
+    <table>
+        <thead>
+            <tr>
+                <td><a href="/showmembers" class="btn btn-blue"><i class="fa fa-eye"></i> Show the Bastards</a></td>
+                <td>
+                    <a href="/addmembers" class="btn btn-blue"><i class="fa fa-plus-circle"></i>Add Members</a>
+                </td>
+                <td><a href="/deletemember" class="btn btn-blue"><i class="fa fa-trash-alt"></i>Delete the Bastards</a></td>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${#lists.isEmpty(members)}">
+                <td>No Members Available</td>
+            </tr>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.getName()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
