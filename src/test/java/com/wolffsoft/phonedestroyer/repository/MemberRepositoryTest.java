@@ -29,7 +29,7 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
     @Before
     public void setup() {
         member13 = Member.builder()
-                .id(13)
+                .id(123456790)
                 .name("Team Member 13")
                 .dateJoinedTeam(LocalDate.of(2019, 1, 1))
                 .pointsCollectedCurrentEvent(111)
