@@ -39,8 +39,6 @@ public class CalculateTest {
         calculate = new Calculate(eventHistoryRepository);
     }
 
-    // TODO make more test cases for this test. Refactor the test data in such a way it is easier to use.
-
     @Test
     public void testCalculateMemberToBeKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryToKick);
