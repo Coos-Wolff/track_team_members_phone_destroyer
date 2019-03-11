@@ -38,6 +38,15 @@ public class MemberServiceTest {
     }
 
     @Test
+    public void testGetMembers() {
+        when(memberRepository.getMembers()).thenReturn(testMembers);
+
+        List<Member> returnedMembers = memberService.getMembers();
+
+        assertThat(returnedMembers).isEqualTo(testMembers);
+    }
+
+    @Test
     public void testAddMember() {
         ArgumentCaptor<Member> argumentCaptor = ArgumentCaptor.forClass(Member.class);
 

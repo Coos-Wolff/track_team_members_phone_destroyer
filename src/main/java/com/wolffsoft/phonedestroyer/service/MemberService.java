@@ -15,6 +15,10 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
+    public List<Member> getMembers() {
+        return memberRepository.getMembers();
+    }
+
     public void addMember(Member member) {
         memberRepository.addMember(member);
     }
