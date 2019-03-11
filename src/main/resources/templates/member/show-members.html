@@ -21,6 +21,9 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Joined</th>
+                <th>Collected Tickets</th>
+                <th>Points Collected</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +32,9 @@
             </tr>
             <tr th:each="member : ${members}">
                 <td th:text="${member.getName()}"></td>
+                <td th:text="${member.getDateJoinedTeam()}"></td>
+                <td th:text="${member.getTicketsCollectedCurrentEvent()}"></td>
+                <td th:text="${member.getPointsCollectedCurrentEvent()}"></td>
             </tr>
         </tbody>
     </table>
