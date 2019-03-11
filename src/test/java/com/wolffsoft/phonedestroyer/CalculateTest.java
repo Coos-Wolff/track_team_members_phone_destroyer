@@ -11,9 +11,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static com.wolffsoft.phonedestroyer.helperclass.model.event.elder.ElderHistoryNotDemoted.getEldersHistoryNotKicked;
 import static com.wolffsoft.phonedestroyer.helperclass.model.event.elder.ElderHistoryDemoted.getEldersHistoryToKick;
-import static com.wolffsoft.phonedestroyer.helperclass.model.event.EventHistoryTestObject.getTestEventHistories;
+import static com.wolffsoft.phonedestroyer.helperclass.model.event.elder.ElderHistoryNotDemoted.getEldersHistoryNotKicked;
 import static com.wolffsoft.phonedestroyer.helperclass.model.event.member.MemberHistoryNotKicked.getMembersHistoryNotKicked;
 import static com.wolffsoft.phonedestroyer.helperclass.model.event.member.MemberHistoryToKick.getMembersHistoryToKick;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,7 +25,6 @@ public class CalculateTest {
     private EventHistoryRepository eventHistoryRepository;
 
     private Calculate calculate;
-    private List<EventHistory> testEventHistories;
     private List<EventHistory> testElderHistoryToKick;
     private List<EventHistory> testElderHistoryNotKicked;
     private List<EventHistory> testMemberHistoryToKick;
@@ -34,7 +32,6 @@ public class CalculateTest {
 
     @Before
     public void setup() {
-        testEventHistories = getTestEventHistories();
         testElderHistoryToKick = getEldersHistoryToKick();
         testElderHistoryNotKicked = getEldersHistoryNotKicked();
         testMemberHistoryToKick = getMembersHistoryToKick();
