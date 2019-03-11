@@ -1,5 +1,3 @@
--- TODO REMOVE DROPPING TABLES IN PRODUCTION !!!!
-DROP TABLE IF EXISTS event;
 CREATE TABLE event
 (
   id         INT          NOT NULL AUTO_INCREMENT,
@@ -10,8 +8,6 @@ CREATE TABLE event
   PRIMARY KEY (id)
 );
 
--- TODO REMOVE DROPPING TABLES IN PRODUCTION !!!!
-DROP TABLE IF EXISTS member;
 CREATE TABLE member
 (
   id                              INT         NOT NULL AUTO_INCREMENT,
@@ -22,8 +18,6 @@ CREATE TABLE member
   PRIMARY KEY (id)
 );
 
--- TODO REMOVE DROPPING TABLES IN PRODUCTION !!!!
-DROP TABLE IF EXISTS event_member;
 CREATE TABLE event_member
 (
   event_id  INT(30) NOT NULL,
@@ -33,8 +27,6 @@ CREATE TABLE event_member
   PRIMARY KEY (event_id, member_id)
 );
 
--- TODO REMOVE DROPPING TABLES IN PRODUCTION !!!!
-DROP TABLE IF EXISTS event_history;
 CREATE TABLE event_history
 (
   id                      INT          NOT NULL AUTO_INCREMENT,
