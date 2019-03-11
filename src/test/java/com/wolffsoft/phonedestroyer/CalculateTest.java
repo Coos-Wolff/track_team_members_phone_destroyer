@@ -48,7 +48,7 @@ public class CalculateTest {
     public void testCalculateMemberToBeKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryToKick);
 
-        List<String> memberNames = calculate.calculateMembersToBeKicked();
+        List<String> memberNames = calculate.kickMembers();
 
         assertThat(memberNames.size()).isEqualTo(2);
     }
@@ -57,7 +57,7 @@ public class CalculateTest {
     public void testMembersNotKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryNotKicked);
 
-        List<String> memberNames = calculate.calculateMembersToBeKicked();
+        List<String> memberNames = calculate.kickMembers();
 
         assertThat(memberNames.size()).isEqualTo(0);
     }
@@ -66,7 +66,7 @@ public class CalculateTest {
     public void testMembersKicked() {
         when(eventHistoryRepository.getEventHistories()).thenReturn(testMemberHistoryToKick);
 
-        List<String> memberNames = calculate.calculateMembersToBeKicked();
+        List<String> memberNames = calculate.kickMembers();
 
         assertThat(memberNames.size()).isEqualTo(2);
     }

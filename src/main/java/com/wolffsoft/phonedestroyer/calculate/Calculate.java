@@ -21,7 +21,7 @@ public class Calculate {
         this.eventHistoryRepository = eventHistoryRepository;
     }
 
-    public List<String> calculateMembersToBeKicked() {
+    public List<String> kickMembers() {
         List<String> membersToKick = new ArrayList<>();
         List<EventHistory> historyLastFourEvents = getEventHistoryLastTwoEvents();
         DivideEventHistory divideEventHistory = divideBasedOnRole(historyLastFourEvents);

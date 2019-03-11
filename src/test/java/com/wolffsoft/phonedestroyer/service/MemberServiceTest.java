@@ -73,7 +73,7 @@ public class MemberServiceTest {
     }
 
     @Test
-    public void testDeleteMember() {
+    public void testDeleteMemberByName() {
         ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
         memberService.deleteMemberByName(member1.getName());
 

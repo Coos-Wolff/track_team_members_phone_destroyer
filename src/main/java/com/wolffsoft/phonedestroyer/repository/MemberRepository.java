@@ -50,7 +50,7 @@ public class MemberRepository {
                 .fetchOne(optionalMemberMapper);
     }
 
-    public List<Member> getAllMembers() {
+    public List<Member> getMembers() {
         return dslContext
                 .select()
                 .from(MEMBER)

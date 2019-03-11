@@ -54,7 +54,7 @@ public class EventService {
 
     public void createNewEvent(String eventName, String eventType) {
         CreateEvent createEvent = CreateEvent.create(eventName, eventType);
-        List<Member> members = memberRepository.getAllMembers();
+        List<Member> members = memberRepository.getMembers();
 
         eventRepository.createNewEvent(createEvent);
 
@@ -70,7 +70,7 @@ public class EventService {
 
     public void endEvent(Event event) {
         eventRepository.endEvent(event);
-        List<Member> members = memberRepository.getAllMembers();
+        List<Member> members = memberRepository.getMembers();
         members.forEach(member -> {
             memberRepository.setTicketsAndPointsToZero(member);
             eventHistoryRepository.storeEventHistory(member, event);

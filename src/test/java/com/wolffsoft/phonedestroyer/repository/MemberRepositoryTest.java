@@ -80,7 +80,7 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
 
     @Test
     public void testGetAllTeamMembers() {
-        List<Member> members = repository.getAllMembers();
+        List<Member> members = repository.getMembers();
 
         assertThat(members.size()).isEqualTo(14);
         assertThat(members.get(0).getId()).isEqualTo(1);
@@ -94,7 +94,7 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
     }
 
     @Test
-    public void testDeleteTeamMember() {
+    public void testDeleteMemberByName() {
         int addedTeamMember = repository.addMember(member13);
 
         assertThat(addedTeamMember).isEqualTo(1);
@@ -107,17 +107,17 @@ public class MemberRepositoryTest extends AbstractTestRepository<MemberRepositor
     }
 
     @Test
-    public void testDeleteTeamMembers() {
+    public void testDeleteMembers() {
         List<Member> members = Stream.of(member13, member14).collect(Collectors.toList());
 
         repository.addMembers(members);
-        List<Member> allMembers = repository.getAllMembers();
+        List<Member> allMembers = repository.getMembers();
 
         assertThat(allMembers.size()).isEqualTo(16);
 
         repository.deleteMembersByName(members);
 
-        allMembers = repository.getAllMembers();
+        allMembers = repository.getMembers();
         assertThat(allMembers.size()).isEqualTo(14);
     }
 

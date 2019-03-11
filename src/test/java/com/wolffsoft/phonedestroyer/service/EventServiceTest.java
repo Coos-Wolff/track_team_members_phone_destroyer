@@ -108,7 +108,7 @@ public class EventServiceTest {
                 .members(testMembers)
                 .build();
 
-        when(memberRepository.getAllMembers()).thenReturn(testMembers);
+        when(memberRepository.getMembers()).thenReturn(testMembers);
         when(eventRepository.getEventByName(EVENT_NAME)).thenReturn(Optional.of(event));
 
         eventService.createNewEvent(EVENT_NAME, EVENT_TYPE_TICKETS);
@@ -147,7 +147,7 @@ public class EventServiceTest {
                 .eventHasEnded(false)
                 .build();
 
-        when(memberRepository.getAllMembers()).thenReturn(testMembers);
+        when(memberRepository.getMembers()).thenReturn(testMembers);
 
         ArgumentCaptor<Member> memberArgumentCaptor = ArgumentCaptor.forClass(Member.class);
         ArgumentCaptor<Event> eventArgumentCaptor = ArgumentCaptor.forClass(Event.class);
